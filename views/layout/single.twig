@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'common/header.twig' %}
+<body>
+{% include 'common/nav.twig'%}
+<div class="container">
+    <div class="row">
+        <div class="hidden-xs hidden-sm col-md-3 col-lg-3">
+            <h1>Blog <span class="in"></span> Aggregator</h1>
+            <p></p>
+            {% block left %}{% endblock %}
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-7 col-lg-8">
+            {% block content %}{% endblock %}
+        </div>
+        <div class="col-xs-12 col-xs-12 col-md-2 col-lg-1">
+
+        </div>
+    </div>
+</div>
+<footer>
+    {% include 'common/footer.twig'%}
+</footer>
+</body>
+</html>
