@@ -11,15 +11,10 @@ foreach($posts as $post)
 {
     $title = isset($post->title) ? (string)$post->title : null;
     $link = isset($post->link) ? (string)$post->link : null;
-    $date = isset($post->date) ? (string)$post->date : null;
+    $date = isset($post->pubDate) ? (string)$post->pubDate : null;
     $description = isset($post->description) ? (string) $post->description: null;
 
-    var_dump($title);
-    var_dump($link);
-    var_dump($date);
-    var_dump($description);
-
-    die;
+    $postModel->insertPost($title, $date, $link, $description);
 }
 
 echo "Proccess finished imported";

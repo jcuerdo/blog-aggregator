@@ -18,7 +18,9 @@ namespace Blog\Controller
 
         public function index( Application $app )
         {
-            return $app['twig']->render('home.twig');
+            $postModel = $app['postModel'];
+            $posts = $postModel->getPosts();
+            return $app['twig']->render('home.twig',['posts' => $posts]);
         }
     }
 }

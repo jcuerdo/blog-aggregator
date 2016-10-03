@@ -1,5 +1,5 @@
 <?php
 
-//$app['apiRequest'] = function ($app) {
-//    return new \Blog\Library\ApiRequest($app['debug'] );
-//};
+$app['postModel'] = function ($app) {
+    return new \Blog\Model\Post($app);
+};

@@ -13,7 +13,7 @@ $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
             'host'      => 'localhost',
             'dbname'    => 'blogaggregator',
             'user'      => 'root',
-            'password'  => '',
+            'password'  => 'root',
             'charset'   => 'utf8mb4',
         ),
     ),

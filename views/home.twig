@@ -1,5 +1,12 @@
 {% extends 'layout/single.twig' %}
 {% block content %}
-    {% include 'common/main-content.twig' %}
+    <div id="main-content" class="row">
+        {% for post in posts %}
+            <h2><a href="{{post.slag}}">{{post.title}}</h2>
+            <span>{{post.date}}</span>
+            <span><a href="{{post.link}}">Artículo original</span>
+            <p>{{post.content | raw}}</p>
+        {% endfor %}
+    </div>
 {% endblock %}
 

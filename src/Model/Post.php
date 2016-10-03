@@ -4,12 +4,21 @@ namespace Blog\Model;
 
 class Post extends Db
 {
-    public function insertVideo($content)
+    public function insertPost($title, $date, $link, $content)
     {
-        $sql = "INSERT INTO posts (content) VALUES(?)";
+        $slag = $this->generateSlag($title);
+        $date = $this->generateDate($date);
+
+        $sql = "INSERT INTO post (title, slag, date, link, content) VALUES(?,?,?,?,?)";
 
         try {
-            $this->app['db']->executeQuery($sql, array($content));
+            $this->app['db']->executeQuery($sql, [
+                $title,
+                $slag,
+                $date,
+                $link,
+                $content
+            ]);
         }
         catch(\Exception $e){
             echo $e->getMessage();
@@ -18,7 +27,7 @@ class Post extends Db
 
     public function getPosts()
     {
-        $sql = "SELECT * FROM posts";
+        $sql = "SELECT * FROM post";
 
         try{
             $stmt = $this->app['db']->executeQuery($sql);
@@ -36,6 +45,20 @@ class Post extends Db
             return [];
         }
 
+    }
+
+    private function generateSlag($title)
+    {
+        $title = iconv('UTF-8', 'ASCII//TRANSLIT', $title);
+        $title = preg_replace("/[^a-zA-Z0-9\/_|+ -]/", '', $title);
+        $title = strtolower(trim($title, '-'));
+        $title = preg_replace("/[\/_|+ -]+/", '-', $title);
+        return $title;
+    }
+
+    private function generateDate($date)
+    {
+        return strtotime($date);
     }
 
 }
