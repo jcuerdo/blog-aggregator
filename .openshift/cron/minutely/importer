@@ -1,0 +1,3 @@
+#!/bin/bash
+
+php $OPENSHIFT_REPO_DIR/src/import.prod.php >  $OPENSHIFT_DATA_DIR/cron.log
