@@ -25,6 +25,11 @@ namespace Blog\Controller
             $page = $app['request']->get( 'page' ) ? : 0;
             $postModel = $app['postModel'];
             $posts = ($postModel->getPosts($page));
+
+            if (!$posts) {
+                throw new NotFoundHttpException();
+            }
+
             return $app['twig']->render('home.twig',['posts' => $posts, 'page' => $page]);
         }
 
