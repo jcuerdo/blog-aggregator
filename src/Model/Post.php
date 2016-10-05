@@ -19,18 +19,22 @@ class Post extends Db
                 $link,
                 $content
             ]);
+            return $slag;
         }
         catch(\Exception $e){
             echo $e->getMessage();
+            return false;
         }
     }
 
-    public function getPosts()
+
+
+    public function getPosts($page = 0, $limit = 10 )
     {
-        $sql = "SELECT * FROM post";
+        $sql = "SELECT * FROM post LIMIT $page,$limit";
 
         try{
-            $stmt = $this->app['db']->executeQuery($sql);
+            $stmt = $this->app['db']->executeQuery($sql, []);
 
             if ( !$result = $stmt->fetchAll() )
             {
@@ -43,6 +47,29 @@ class Post extends Db
         {
             echo $e->getMessage();
             return [];
+        }
+
+    }
+
+
+    public function getPost($slug)
+    {
+        $sql = "SELECT * FROM post where slag = ?";
+
+        try{
+            $stmt = $this->app['db']->executeQuery($sql, [$slug]);
+
+            if ( !$result = $stmt->fetch() )
+            {
+                return null;
+            }
+
+            return $result;
+        }
+        catch(\Exception $e)
+        {
+            echo $e->getMessage();
+            return null;
         }
 
     }

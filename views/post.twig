@@ -1,0 +1,9 @@
+{% extends 'layout/single.twig' %}
+{% block content %}
+    <div id="main-content" class="row">
+            <h1><a href="{{post.slag}}">{{post.title}}</a></h1>
+            <span><a href="{{post.link}}">Artículo original</a></span>
+            <p>{{post.content | raw}}</p>
+    </div>
+{% endblock %}
+

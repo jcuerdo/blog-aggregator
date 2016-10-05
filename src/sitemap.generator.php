@@ -16,7 +16,7 @@ $posts = $postsModel->getPosts();
 
 foreach($posts as $post) {
     $sitemap->addUrl(
-        $app['url'] . urldecode($post['content']),
+        $app['url'] . urldecode($post['slag']),
         date('c'),
         'daily',
         '0.5'

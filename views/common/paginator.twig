@@ -1,0 +1,6 @@
+{% if page is defined%}
+    {% if page > 0 %}
+    <a class="page pageprev" href="?page={{ page-1 }}">Página Anterior</a>
+    {% endif %}
+    <a class="page pagenext" href="?page={{ page+1 }}">Siguiente página </a>
+{% endif %}

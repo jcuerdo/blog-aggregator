@@ -1,12 +1,12 @@
-{% extends 'layout/single.twig' %}
+{% extends 'layout/list.twig' %}
 {% block content %}
     <div id="main-content" class="row">
         {% for post in posts %}
-            <h2><a href="{{post.slag}}">{{post.title}}</h2>
-            <span>{{post.date}}</span>
-            <span><a href="{{post.link}}">Artículo original</span>
+            <h1><a href="{{post.slag}}">{{post.title}}</a></h1>
+            <span><a href="{{post.link}}">Artículo original</a></span>
             <p>{{post.content | raw}}</p>
         {% endfor %}
+        {% include 'common/paginator.twig'%}
     </div>
 {% endblock %}
 
