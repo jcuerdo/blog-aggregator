@@ -2,6 +2,7 @@
 {% block content %}
     <div id="main-content" class="row">
             <h1><a href="{{post.slag}}">{{post.title}}</a></h1>
+            <span>{{post.date | date('d/m/Y')}}</span>
         <!-- AddToAny BEGIN -->
         <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
             <a class="a2a_dd" href="https://www.addtoany.com/share?linkurl={{ app.url }}/{{post.slag}}&amp;linkname="></a>

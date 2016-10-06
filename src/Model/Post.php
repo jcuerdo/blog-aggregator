@@ -31,7 +31,7 @@ class Post extends Db
 
     public function getPosts($page = 0, $limit = 10 )
     {
-        $sql = "SELECT * FROM post LIMIT $page,$limit";
+        $sql = "SELECT * FROM post ORDER BY date DESC LIMIT $page,$limit";
 
         try{
             $stmt = $this->app['db']->executeQuery($sql, []);
@@ -86,7 +86,13 @@ class Post extends Db
     private function generateDate($date)
     {
         $time =  strtotime($date);
-	return date ('Y-m-d h:i:s' , $time);
+        if(!$time){
+            $time = time();
+        }
+
+
+
+	    return date ('Y-m-d h:i:s' , $time);
     }
 
 }
