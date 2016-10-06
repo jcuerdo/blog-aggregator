@@ -85,7 +85,8 @@ class Post extends Db
 
     private function generateDate($date)
     {
-        return strtotime($date);
+        $time =  strtotime($date);
+	return date ('Y-m-d h:i:s' , $time);
     }
 
 }
