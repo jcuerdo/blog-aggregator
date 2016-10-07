@@ -18,7 +18,7 @@ foreach($app->rss as $rss){
 
         if ($slug = $postModel->insertPost($title, $date, $link, $description)) {
             $exporter = new \Blog\Twitter\Exporter();
-            $exporter->publishPost($app['url'] . '/' . $slug);
+            $exporter->publishPost($title . ' - ' . $app['url'] . '/' . $slug);
         }
     }
     echo "Imported finished \n";
