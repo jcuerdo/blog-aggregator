@@ -1,15 +1,3 @@
-{% if lastPosts is defined %}
-<div class="module">
-<h2>Últimos posts</h2>
-    <ul>
-    {% for lastPost in lastPosts %}
-        <li>
-            <a href="{{ app.url }}/{{ lastPost.slag }}">{{ lastPost.title }}</a>
-        </li>
-    {% endfor %}
-    </ul>
-</div>
-{% endif %}
 <div class="module">
     <center>
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -24,3 +12,16 @@
         </script>
     </center>
 </div>
+
+{% if lastPosts is defined %}
+<div class="module">
+<h2>Últimos posts</h2>
+    <ul>
+    {% for lastPost in lastPosts %}
+        <li>
+            <a href="{{ app.url }}/{{ lastPost.slag }}">{{ lastPost.title }}</a>
+        </li>
+    {% endfor %}
+    </ul>
+</div>
+{% endif %}
