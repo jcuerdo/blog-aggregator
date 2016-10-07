@@ -10,7 +10,7 @@ $sitemap->robotsFileName = __DIR__ . "/../web/robots.txt";
 
 $postsModel = new \Blog\Model\Post($app);
 
-$posts = $postsModel->getPosts();
+$posts = $postsModel->getPosts(0, 1000);
 
 foreach($posts as $post) {
     $sitemap->addUrl(
@@ -20,7 +20,6 @@ foreach($posts as $post) {
         '0.5'
     );
 }
-
 
 $sitemap->createSitemap();
 $sitemap->writeSitemap();

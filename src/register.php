@@ -8,6 +8,11 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
    ),
 ));
 
+
+$app->register(new Silex\Provider\HttpCacheServiceProvider(), array(
+    'http_cache.cache_dir' => '/tmp',
+));
+
 $app->register(new Silex\Provider\UrlGeneratorServiceProvider());
 
 $app->register(new Silex\Provider\SessionServiceProvider());
