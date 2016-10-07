@@ -21,5 +21,5 @@ $app->rss = [
 'http://feeds2.feedburner.com/WwwhatsNew',
 'http://feeds.feedburner.com/geeksroom/YpGd',
 'http://feeds.hipertextual.com/alt1040',
-'http://ep00.epimg.net/rss/tecnologia/portada.xml'),
+'http://ep00.epimg.net/rss/tecnologia/portada.xml'
 ];
