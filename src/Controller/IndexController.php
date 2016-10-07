@@ -25,12 +25,17 @@ namespace Blog\Controller
             $page = $app['request']->get( 'page' ) ? : 0;
             $postModel = $app['postModel'];
             $posts = ($postModel->getPosts($page));
+            $lastPosts = ($postModel->getPosts());
 
             if (!$posts) {
                 throw new NotFoundHttpException();
             }
 
-            return $app['twig']->render('home.twig',['posts' => $posts, 'page' => $page]);
+            return $app['twig']->render('home.twig',[
+                'lastPosts' => $lastPosts,
+                'posts' => $posts,
+                'page' => $page]
+            );
         }
 
         public function post( Application $app )
@@ -38,12 +43,17 @@ namespace Blog\Controller
             $postModel = $app['postModel'];
             $postSlug = $app['request']->get( 'slug' );
             $post = $postModel->getPost($postSlug);
+            $lastPosts = ($postModel->getPosts());
 
             if (!$post) {
                 throw new NotFoundHttpException();
             }
 
-            return $app['twig']->render('post.twig',['post' => $post]);
+            return $app['twig']->render('post.twig', [
+                'lastPosts' => $lastPosts,
+                'post' => $post
+            ]
+            );
         }
     }
 }

@@ -1,0 +1,26 @@
+{% if lastPosts is defined %}
+<div class="module">
+<h2>Últimos posts</h2>
+    <ul>
+    {% for lastPost in lastPosts %}
+        <li>
+            <a href="{{ app.url }}/{{ lastPost.slag }}">{{ lastPost.title }}</a>
+        </li>
+    {% endfor %}
+    </ul>
+</div>
+{% endif %}
+<div class="module">
+    <center>
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- Una sola página - 3 (para móviles, www.andsoyoucode.xyz) -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-6904186947817626"
+             data-ad-slot="9308815995"
+             data-ad-format="auto"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </center>
+</div>
