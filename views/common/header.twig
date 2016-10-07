@@ -5,12 +5,16 @@
     {%  include 'common/seo.twig' %}
     <meta name="hubtraffic-domain-validation"  content="c4c50ce5d36eff59" />
     <meta name="google-site-verification" content="0uw8M6v5BP6ZyMz4BrG7cZ5STjKsmGVAII4j94m3xiw" />
-    <title></title>
+    <title>{{ app.name }}
+    {% if post is defined %}
+        - {{ post.title }}
+    {% endif %}
+    </title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-
+    <link rel="icon" type="image/png" href="favicon.png" />
     <!-- Custom styles for this template -->
     <link href="http://getbootstrap.com/examples/starter-template/starter-template.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.js"></script>
@@ -102,6 +106,12 @@
             margin: 10px;
             color:white;
         }
+
+        img{
+            width:100%;
+        }
+
+        .left{padding-top:15px;}
 
     </style>
 </head>

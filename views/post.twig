@@ -2,6 +2,7 @@
 {% block content %}
     <div id="main-content" class="row">
             <h1><a href="{{post.slag}}">{{post.title}}</a></h1>
+            <span>{{post.date | date('d/m/Y')}}</span>
         <!-- AddToAny BEGIN -->
         <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
             <a class="a2a_dd" href="https://www.addtoany.com/share?linkurl={{ app.url }}/{{post.slag}}&amp;linkname="></a>
@@ -18,18 +19,29 @@
         <script async src="https://static.addtoany.com/menu/page.js"></script>
         <!-- AddToAny END -->
             <span><a href="{{post.link}}">Artículo original</a></span>
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- Una sola página - 5 (para móviles, www.andsoyoucode.xyz) -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-6904186947817626"
+                     data-ad-slot="3262282391"
+                     data-ad-format="auto"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
             <p>{{post.content | raw}}</p>
     </div>
 {% endblock %}
 {% block left %}
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <!-- Una sola página - 5 (para móviles, www.andsoyoucode.xyz) -->
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-6904186947817626"
-         data-ad-slot="3262282391"
-         data-ad-format="auto"></ins>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
+    <center>
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- VerticalCODE -->
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:160px;height:600px"
+             data-ad-client="ca-pub-6904186947817626"
+             data-ad-slot="6383225591"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </center>
 {% endblock %}
