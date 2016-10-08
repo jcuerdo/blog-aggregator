@@ -3,6 +3,7 @@ namespace Blog\Controller
 {
     use Silex\Application;
     use Silex\ControllerProviderInterface;
+    use Symfony\Component\HttpFoundation\Response;
     use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
     class IndexController implements ControllerProviderInterface
@@ -31,11 +32,15 @@ namespace Blog\Controller
                 throw new NotFoundHttpException();
             }
 
-            return $app['twig']->render('home.twig',[
-                'lastPosts' => $lastPosts,
-                'posts' => $posts,
-                'page' => $page]
-            );
+            return new Response($app['twig']->render('home.twig',[
+                    'lastPosts' => $lastPosts,
+                    'posts' => $posts,
+                    'page' => $page]
+            ), 200, [
+                'Cache-Control' => 's-maxage=500'
+            ]);
+
+            return ;
         }
 
         public function post( Application $app )
@@ -49,11 +54,13 @@ namespace Blog\Controller
                 throw new NotFoundHttpException();
             }
 
-            return $app['twig']->render('post.twig', [
-                'lastPosts' => $lastPosts,
-                'post' => $post
-            ]
-            );
+            return new Response($app['twig']->render('post.twig', [
+                    'lastPosts' => $lastPosts,
+                    'post' => $post
+                ]
+            ), 200, [
+                'Cache-Control' => 's-maxage=10000000'
+            ]);
         }
     }
 }

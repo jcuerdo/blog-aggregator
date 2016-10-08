@@ -19,7 +19,7 @@
     <ul>
     {% for lastPost in lastPosts %}
         <li>
-            <a href="{{ app.url }}/{{ lastPost.slag }}">{{ lastPost.title }}</a>
+            <a href="{{ path('post', {'slug' : lastPost.slag}) }}">{{ lastPost.title }}</a>
         </li>
     {% endfor %}
     </ul>
