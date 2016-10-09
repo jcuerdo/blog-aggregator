@@ -34,5 +34,5 @@ $app->rss = [
 'http://www.tecnodatum.com/feed/',
 'http://feeds2.feedburner.com/tecnogeekcom',
 'https://ubuntulife.wordpress.com/feed/',
-'http://www.uberbin.net/feed',
+'http://feeds.noxvo.com/gadgetos/',
 ];
