@@ -55,13 +55,13 @@ class Post extends Db
 
     public function searchPosts($searchTerm = '', $page = 0, $limit = 10 )
     {
-        $sql = "SELECT * FROM post WHERE content like '%$searchTerm%' OR title like '%$searchTerm%' ORDER BY date DESC LIMIT $page,$limit";
-
+        $sql = "SELECT * FROM post WHERE content like ? or title like ? ORDER BY date DESC LIMIT $page,$limit";
+        $searchTerm = '%' . $searchTerm . '%';
         try{
             /**
              * @var $stmt Statement
              */
-            $stmt = $this->app['db']->executeQuery($sql, []);
+            $stmt = $this->app['db']->executeQuery($sql, [$searchTerm,$searchTerm]);
 
             if ( !$result = $stmt->fetchAll() )
             {
