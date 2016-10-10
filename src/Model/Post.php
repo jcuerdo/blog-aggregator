@@ -2,6 +2,8 @@
 
 namespace Blog\Model;
 
+use Doctrine\DBAL\Statement;
+
 class Post extends Db
 {
     public function insertPost($title, $date, $link, $content)
@@ -34,6 +36,31 @@ class Post extends Db
         $sql = "SELECT * FROM post ORDER BY date DESC LIMIT $page,$limit";
 
         try{
+            $stmt = $this->app['db']->executeQuery($sql, []);
+
+            if ( !$result = $stmt->fetchAll() )
+            {
+                return array();
+            }
+
+            return $result;
+        }
+        catch(\Exception $e)
+        {
+            echo $e->getMessage();
+            return [];
+        }
+
+    }
+
+    public function searchPosts($searchTerm = '', $page = 0, $limit = 10 )
+    {
+        $sql = "SELECT * FROM post WHERE content like '%$searchTerm%' OR title like '%$searchTerm%' ORDER BY date DESC LIMIT $page,$limit";
+
+        try{
+            /**
+             * @var $stmt Statement
+             */
             $stmt = $this->app['db']->executeQuery($sql, []);
 
             if ( !$result = $stmt->fetchAll() )

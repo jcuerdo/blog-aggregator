@@ -25,11 +25,16 @@ namespace Blog\Controller
         {
             $page = $app['request']->get( 'page' ) ? : 0;
             $postModel = $app['postModel'];
-            $posts = ($postModel->getPosts($page));
-            $lastPosts = ($postModel->getPosts());
+            $searchTerm = $app['request']->get( 's' ) ? : '';
+            $lastPosts = ($postModel->getPosts($page));
+            if($searchTerm){
+                $posts = ($postModel->searchPosts($searchTerm, $page));
+            } else{
+                $posts = ($postModel->getPosts($page));
+            }
 
             if (!$posts) {
-                throw new NotFoundHttpException();
+                throw new NotFoundHttpException('No results');
             }
 
             return new Response($app['twig']->render('home.twig',[
