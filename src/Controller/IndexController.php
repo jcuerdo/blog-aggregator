@@ -42,7 +42,7 @@ namespace Blog\Controller
                     'posts' => $posts,
                     'page' => $page]
             ), 200, [
-                'Cache-Control' => 's-maxage=500'
+                'Cache-Control' => 's-maxage=5'
             ]);
 
             return ;
