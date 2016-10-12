@@ -42,7 +42,7 @@ namespace Blog\Controller
                     'posts' => $posts,
                     'page' => $page]
             ), 200, [
-                'Cache-Control' => 'max-age=5'
+                'Cache-Control' => 'max-age=60, public, must-revalidate'
             ]);
 
             return ;
@@ -64,7 +64,7 @@ namespace Blog\Controller
                     'post' => $post
                 ]
             ), 200, [
-                'Cache-Control' => 'max-age=10000000'
+                'Cache-Control' => 'max-age=10000000, public'
             ]);
         }
     }
