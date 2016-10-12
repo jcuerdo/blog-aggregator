@@ -34,7 +34,7 @@ namespace Blog\Controller
             }
 
             if (!$posts) {
-                throw new NotFoundHttpException('No results');
+                throw new NotFoundHttpException('No se han encontrado resultados');
             }
 
             return new Response($app['twig']->render('home.twig',[
@@ -42,7 +42,7 @@ namespace Blog\Controller
                     'posts' => $posts,
                     'page' => $page]
             ), 200, [
-                'Cache-Control' => 'max-age=60, public, must-revalidate'
+                'Cache-Control' => 's-maxage=60 max-age=60, public, must-revalidate'
             ]);
         }
 
@@ -62,7 +62,7 @@ namespace Blog\Controller
                     'post' => $post
                 ]
             ), 200, [
-                'Cache-Control' => 'max-age=10000000, public'
+                'Cache-Control' => 's-maxage=10000000 max-age=10000000, public'
             ]);
         }
     }
