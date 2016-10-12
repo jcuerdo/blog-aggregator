@@ -44,8 +44,6 @@ namespace Blog\Controller
             ), 200, [
                 'Cache-Control' => 'max-age=60, public, must-revalidate'
             ]);
-
-            return ;
         }
 
         public function post( Application $app )
