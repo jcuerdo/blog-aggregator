@@ -40,7 +40,9 @@ namespace Blog\Controller
             return new Response($app['twig']->render('home.twig',[
                     'lastPosts' => $lastPosts,
                     'posts' => $posts,
-                    'page' => $page]
+                    'page' => $page,
+                    'searchTerm' => $searchTerm
+                ]
             ), 200, [
                 'Cache-Control' => 's-maxage=60 max-age=60, public, must-revalidate'
             ]);

@@ -112,7 +112,7 @@ class Post extends Db
 
     private function generateDate($date)
     {
-        $time =  strtotime($date);
+        $time = time();
 
 	    return date ('Y-m-d h:i:s' , $time);
     }
