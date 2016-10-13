@@ -18,6 +18,6 @@ $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
 ));
 
 $app['debug'] = false;
-$app['url'] = 'http://www.andsoyoucode.xyz';
-$app['name'] = 'And So You Code';
+$app['url'] = 'http://www.lineadecodigo.es';
+$app['name'] = 'Linea de código';
 $app['description'] = 'Noticias sobre tecnología e internet';
