@@ -3,6 +3,7 @@
     <div id="main-content" class="row">
         {% set postNumber = 1 %}
         {% for post in posts %}
+            <div class="post">
             <h1><a href="{{post.slag}}">{{post.title}}</a></h1>
             <span>{{post.date | date('d/m/Y')}}</span>
             <!-- AddToAny BEGIN -->
@@ -35,6 +36,7 @@
                 </script>
             {% endif %}
             {% set postNumber = postNumber + 1 %}
+            </div>
         {% endfor %}
         {% include 'common/paginator.twig'%}
     </div>
