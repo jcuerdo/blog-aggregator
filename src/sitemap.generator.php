@@ -10,7 +10,7 @@ $sitemap->robotsFileName = __DIR__ . "/../web/robots.txt";
 
 $postsModel = new \Blog\Model\Post($app);
 
-$posts = $postsModel->getPosts(0, 1000);
+$posts = $postsModel->getPosts(0, 10000);
 
 foreach($posts as $post) {
     $sitemap->addUrl(

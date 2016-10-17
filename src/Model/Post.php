@@ -114,7 +114,7 @@ class Post extends Db
     {
         $time = time();
 
-	    return date ('Y-m-d h:i:s' , $time);
+	    return date ('Y-m-d H:i:s' , $time);
     }
 
 }
