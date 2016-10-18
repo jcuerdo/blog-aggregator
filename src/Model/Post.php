@@ -6,6 +6,12 @@ use Doctrine\DBAL\Statement;
 
 class Post extends Db
 {
+    /**
+     * @var int
+     */
+    const SINGLE_POST_TTL = 10000000;
+    const INDEX_TTL = 3600;
+
     public function insertPost($title, $date, $link, $content)
     {
         $slag = $this->generateSlag($title);
@@ -55,6 +61,11 @@ class Post extends Db
 
     public function searchPosts($searchTerm = '', $page = 0, $limit = 10 )
     {
+        $cacheKey = 'index' . '-' . $searchTerm . '-' . $page;
+        if(!$this->app['debug'] && \apc_exists($cacheKey))
+        {
+            return  \apc_fetch($cacheKey);
+        }
         $sql = "SELECT * FROM post WHERE content like ? or title like ? ORDER BY date DESC LIMIT $page,$limit";
         $searchTerm = '%' . $searchTerm . '%';
         try{
@@ -67,7 +78,9 @@ class Post extends Db
             {
                 return array();
             }
-
+            if(!$this->app['debug']){
+                \apc_add($cacheKey, $result, self::INDEX_TTL);
+            }
             return $result;
         }
         catch(\Exception $e)
@@ -81,6 +94,11 @@ class Post extends Db
 
     public function getPost($slug)
     {
+        if(!$this->app['debug'] && \apc_exists($slug))
+        {
+            return  \apc_fetch($slug);
+        }
+
         $sql = "SELECT * FROM post where slag = ?";
 
         try{
@@ -90,7 +108,9 @@ class Post extends Db
             {
                 return null;
             }
-
+            if(!$this->app['debug']){
+                \apc_add($slug, $result, self::SINGLE_POST_TTL);
+            }
             return $result;
         }
         catch(\Exception $e)
