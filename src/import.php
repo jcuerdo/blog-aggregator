@@ -16,6 +16,11 @@ foreach($app->rss as $rss){
         $date = isset($post->pubDate) ? (string)$post->pubDate : null;
         $description = isset($post->description) ? (string) $post->description: null;
 
+        if (strlen($description) < 300) {
+            echo "Discarted description too short: " . $description;
+            continue;
+        }
+
         if ($slug = $postModel->insertPost($title, $date, $link, $description)) {
             $exporter = new \Blog\Twitter\Exporter();
             $exporter->publishPost($title . ' - ' . $app['url'] . '/' . $slug);
