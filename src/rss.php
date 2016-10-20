@@ -45,4 +45,5 @@ $app->rss = [
 'http://www.revistacloudcomputing.com/feed/',
 'http://www.blog.hosting.cl/feed/',
 'http://hostingdiario.com/feed/',
+'http://picodotdev.github.io/blog-bitix/index.xml',
 ];
