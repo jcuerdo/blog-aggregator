@@ -15,7 +15,7 @@ foreach($app->rss as $rss){
         $link = isset($post->link) ? (string)$post->link : null;
         $date = isset($post->pubDate) ? (string)$post->pubDate : null;
         $description = isset($post->description) ? (string) $post->description: null;
-        
+
         if (strlen($description) < 650) {
             echo "Discarted description too short: " . $description;
             continue;

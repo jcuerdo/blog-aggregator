@@ -46,4 +46,11 @@ $app->rss = [
 'http://www.blog.hosting.cl/feed/',
 'http://hostingdiario.com/feed/',
 'http://picodotdev.github.io/blog-bitix/index.xml',
+'https://blog.neothek.com/category/web-hosting/feed/',
+'https://blog.neothek.com/category/dominios/feed/',
+'http://www.todohostingweb.com/feed/',
+'http://elpais.com/tag/rss/dominios_internet/a',
+'http://hostingdiario.com/feed/',
+'http://www.dominios.es/dominios/es/noticias/feed',
+'http://feeds.feedburner.com/Registradores?format=xml',
 ];
