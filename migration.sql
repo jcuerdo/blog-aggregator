@@ -1,9 +1,9 @@
-CREATE TABLE post
-  (
-    title VARCHAR(256),
-    slag VARCHAR(256),
-    date TIMESTAMP,
-    link VARCHAR(512),
-    content TEXT,
-    PRIMARY KEY (slag)
-  );
+CREATE TABLE IF NOT EXISTS post (
+  title varchar(240) DEFAULT NULL,
+  slag varchar(240) NOT NULL DEFAULT '',
+  date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  link varchar(512) DEFAULT NULL,
+  content text,
+  PRIMARY KEY (slag),
+  KEY slag (slag)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
