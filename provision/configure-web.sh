@@ -16,11 +16,4 @@ cd /vagrant
 echo "Installing dependencies"
 composer install
 
-echo "Create or update database and fixtures"
-sudo chmod 777 app/console
-app/console doctrine:schema:create
-app/console doctrine:schema:update
-app/console doctrine:fixtures:load
-app/console cache:clear
-
 echo "Web configured!"
