@@ -1,10 +1,8 @@
 <?php
+require_once __DIR__.'/config.php';
+
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-
-require_once __DIR__.'/../vendor/autoload.php';
-
-$app = new Silex\Application();
 
 $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
     'dbs.options' => array (
@@ -20,6 +18,5 @@ $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
 ));
 
 $app['debug'] = true;
-$app['url'] = 'http://www.lineadecodigo.es';
-$app['name'] = 'Linea de código';
-$app['description'] = 'Noticias sobre tecnología e internet';
+
+require_once __DIR__.'/parameters.php';
