@@ -15,6 +15,6 @@ $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
     ),
 ));
 
-$app['debug'] = true;
+$app['debug'] = false;
 
 require_once __DIR__.'/parameters.php';
