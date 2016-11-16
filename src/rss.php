@@ -59,5 +59,12 @@ $app->rss = [
     'http://blog.opensistemas.com/feed/',
     'https://feeds.feedburner.com/picandocodigo',
     'https://www.irontec.com/rss/',
-    'http://feeds.feedburner.com/BlogIngeniera'
+    'http://feeds.feedburner.com/BlogIngeniera',
+    'http://computerhoy.com/rss.xml',
+    'https://www.azulweb.net/feed/',
+    'http://www.ewaldosoft.com/feed/',
+    'http://feeds.feedburner.com/1000tipsinformaticos/feed1000',
+    'http://www.ticbeat.com/feed/',
+    'http://www.adslzone.net/feed/',
+    'http://bibliotecaprofesional.com/feed/',
 ];
