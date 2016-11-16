@@ -3,6 +3,7 @@
 namespace Blog\Model;
 
 use Doctrine\DBAL\Statement;
+use PDO;
 
 class Post extends Db
 {
@@ -39,11 +40,14 @@ class Post extends Db
 
     public function getPosts($page = 0, $limit = 10 )
     {
-        $sql = "SELECT * FROM post ORDER BY date DESC LIMIT $page,$limit";
+        $start = $page * $limit;
+        $sql = "SELECT * FROM post ORDER BY date DESC LIMIT :start,:limit";
 
         try{
-            $stmt = $this->app['db']->executeQuery($sql, []);
-
+            $stmt = $this->app['db']->prepare($sql);
+            $stmt->bindParam(':start', $start, PDO::PARAM_INT);
+            $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+            $stmt->execute();
             if ( !$result = $stmt->fetchAll() )
             {
                 return array();
@@ -61,23 +65,30 @@ class Post extends Db
 
     public function searchPosts($searchTerm = '', $page = 0, $limit = 10 )
     {
+        $start = $page * $limit;
         $cacheKey = 'index' . '-' . $searchTerm . '-' . $page;
         if(!$this->app['debug'] && \apc_exists($cacheKey))
         {
             return  \apc_fetch($cacheKey);
         }
-        $sql = "SELECT * FROM post WHERE content like ? or title like ? ORDER BY date DESC LIMIT $page,$limit";
-        $searchTerm = '%' . $searchTerm . '%';
+        $sql = "SELECT * FROM post WHERE content like :search or title like :search ORDER BY date DESC LIMIT :start ,:limit";
+        $searchTerm = "%$searchTerm%";
         try{
             /**
              * @var $stmt Statement
              */
-            $stmt = $this->app['db']->executeQuery($sql, [$searchTerm,$searchTerm]);
+            $stmt = $this->app['db']->prepare($sql);
 
+            $stmt = $this->app['db']->prepare($sql);
+            $stmt->bindParam(':search', $searchTerm, PDO::PARAM_STR);
+            $stmt->bindParam(':start', $start, PDO::PARAM_INT);
+            $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+            $stmt->execute();
             if ( !$result = $stmt->fetchAll() )
             {
                 return array();
             }
+
             if(!$this->app['debug']){
                 \apc_add($cacheKey, $result, self::INDEX_TTL);
             }
@@ -134,7 +145,7 @@ class Post extends Db
     {
         $time = time();
 
-	    return date ('Y-m-d H:i:s' , $time);
+        return date ('Y-m-d H:i:s' , $time);
     }
 
 }
