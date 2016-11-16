@@ -39,10 +39,10 @@ class Post extends Db
 
     public function getPosts($page = 0, $limit = 10 )
     {
-        $sql = "SELECT * FROM post ORDER BY date DESC LIMIT $page,$limit";
+        $sql = "SELECT * FROM post ORDER BY date DESC LIMIT ?,?";
 
         try{
-            $stmt = $this->app['db']->executeQuery($sql, []);
+            $stmt = $this->app['db']->executeQuery($sql, [$page*$limit,$limit]);
 
             if ( !$result = $stmt->fetchAll() )
             {
@@ -66,13 +66,13 @@ class Post extends Db
         {
             return  \apc_fetch($cacheKey);
         }
-        $sql = "SELECT * FROM post WHERE content like ? or title like ? ORDER BY date DESC LIMIT $page,$limit";
+        $sql = "SELECT * FROM post WHERE content like ? or title like ? ORDER BY date DESC LIMIT ?,?";
         $searchTerm = '%' . $searchTerm . '%';
         try{
             /**
              * @var $stmt Statement
              */
-            $stmt = $this->app['db']->executeQuery($sql, [$searchTerm,$searchTerm]);
+            $stmt = $this->app['db']->executeQuery($sql, [$searchTerm,$searchTerm,$page*$limit,$limit]);
 
             if ( !$result = $stmt->fetchAll() )
             {
