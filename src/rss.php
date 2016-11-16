@@ -53,4 +53,9 @@ $app->rss = [
     'http://hostingdiario.com/feed/',
     'http://www.dominios.es/dominios/es/noticias/feed',
     'http://feeds.feedburner.com/Registradores?format=xml',
+    'https://feeds.feedburner.com/frogxthree',
+    'https://www.incubaweb.com/feed/',
+    'http://mangasverdes.es/feed/',
+    'http://feeds.feedburner.com/JonathanMelgozaBlog',
+    'https://feeds.feedburner.com/picandocodigo',
 ];
