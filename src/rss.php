@@ -29,7 +29,11 @@ $app->rss = [
     'http://www.scrummanager.net/blog/feed/',
     'http://patronesdediseno.blogspot.com/feeds/posts/default',
     'https://devexperto.com/feed/',
-    'http://elblogdepicodev.blogspot.com/feeds/posts/default?alt=rss'
-
-
+    'http://elblogdepicodev.blogspot.com/feeds/posts/default?alt=rss',
+    'http://www.interdigital.es/DesktopModules/DnnForge%20-%20NewsArticles/Rss.aspx?TabID=127&ModuleID=448&MaxCount=25',
+    'http://eduardodulce.es/feed/',
+    'http://m3soft.es/blog/category/programacion-php/feed/',
+    'http://www.ecodeup.com/feed/',
+    'http://www.campusmvp.es/recursos/syndication.axd',
+    'http://www.ewaldosoft.com/category/ingenieria-sistemas-informatica/feed/',
 ];
