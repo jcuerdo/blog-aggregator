@@ -56,6 +56,8 @@ $app->rss = [
     'https://feeds.feedburner.com/frogxthree',
     'https://www.incubaweb.com/feed/',
     'http://mangasverdes.es/feed/',
-    'http://feeds.feedburner.com/JonathanMelgozaBlog',
+    'http://blog.opensistemas.com/feed/',
     'https://feeds.feedburner.com/picandocodigo',
+    'https://www.irontec.com/rss/',
+    'http://feeds.feedburner.com/BlogIngeniera'
 ];
