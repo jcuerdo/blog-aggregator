@@ -4,7 +4,7 @@
         {% set postNumber = 1 %}
         {% for post in posts %}
             <div class="post">
-            <h1><a href="{{post.slag}}">{{post.title}}</a></h1>
+            <h2><a href="{{post.slag}}">{{post.title}}</a></h2>
             <span>{{post.date | date('d/m/Y')}}</span>
             <!-- AddToAny BEGIN -->
             <div class="a2a_kit a2a_kit_size_32 a2a_default_style">

@@ -1,6 +1,7 @@
 <?php
-require_once __DIR__.'/config.php';
+require_once __DIR__.'/../vendor/autoload.php';
 
+$app = new Silex\Application();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
@@ -19,4 +20,4 @@ $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
 
 $app['debug'] = true;
 
-require_once __DIR__.'/parameters.php';
+require_once 'parameters.php';

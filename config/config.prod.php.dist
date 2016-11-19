@@ -1,5 +1,7 @@
 <?php
-require_once __DIR__.'/config.php';
+require_once __DIR__.'/../vendor/autoload.php';
+
+$app = new Silex\Application();
 
 $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
     'dbs.options' => array (
@@ -17,4 +19,4 @@ $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
 
 $app['debug'] = false;
 
-require_once __DIR__.'/parameters.php';
+require_once 'parameters.php';
