@@ -1,4 +1,4 @@
-# Blog aggregater
+# Blog aggregator
 
 This is a RSS blog aggregator, to use it you just need:
 
