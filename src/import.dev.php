@@ -5,4 +5,3 @@ $app = new Silex\Application();
 
 require_once __DIR__ . '/config.dev.php';
 require_once __DIR__ . '/import.php';
-
