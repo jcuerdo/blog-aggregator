@@ -1,6 +1,4 @@
 <?php
-require_once __DIR__.'/config.php';
-
 $app['url'] = 'http://www.lineadecodigo.es';
 $app['name'] = 'Linea de código';
 $app['description'] = 'Noticias sobre tecnología e internet';
