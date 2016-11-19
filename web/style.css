@@ -16,19 +16,11 @@ a:hover{
     text-decoration: none;
 }
 
-h2
+.post h2
 {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin:0px;
+    font-size: 36px;
 }
-h2 a
-{
-    font-size: 13px;
-    color: #ffcc00;
-    margin:0px;
-}
+
 .pager a
 {
     text-shadow: 0.5px 0.5px #777;
@@ -66,15 +58,11 @@ h2 a
 .page{
     background-color: #3c3c3c;
     padding: 10px;
-    margin: 10px;
     color:white;
 }
 
 img{
     max-width:100%;
-}
-h2{
-    margin-top:20px;
 }
 
 .module{
@@ -82,7 +70,6 @@ h2{
 }
 .module h2{
     text-align: center;
-
     padding:5px;
     margin:5px;
 }
