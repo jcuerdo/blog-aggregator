@@ -19,7 +19,12 @@ foreach($posts as $post) {
         'daily',
         '0.5'
     );
+    echo "Addig URL " . $post['slag'];
 }
+
+echo "Gnerating Sitemap";
 
 $sitemap->createSitemap();
 $sitemap->writeSitemap();
+
+echo "Sitemap Generated";

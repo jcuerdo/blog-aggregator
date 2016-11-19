@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__.'/../src/config.prod.php';
+require_once __DIR__ . '/../config/config.prod.php';
 require_once __DIR__.'/../src/register.php';
 
 $app->error(function (\Exception $e, $code) use($app) {
