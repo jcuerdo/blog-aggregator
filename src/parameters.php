@@ -5,6 +5,7 @@ $app['url'] = 'http://www.lineadecodigo.es';
 $app['name'] = 'Linea de código';
 $app['description'] = 'Noticias sobre tecnología e internet';
 $app['google_verification'] = '<meta name="google-site-verification" content="sdIPbTU_NTJziWKd2pW2iXz0wiA5pfVT5jJwVfibF_0" />';
+$app['bing_verification'] = '<meta name="msvalidate.01" content="00A5EBE2A1B3A67BE50B9A90285E5578" />';
 $app['yandex_verification'] = '<meta name="yandex-verification" content="1924271e3eb9e058" />';
 $app[''] = '';
 
