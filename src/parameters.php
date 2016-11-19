@@ -5,6 +5,7 @@ $app['url'] = 'http://www.diariotecnologia.es';
 $app['name'] = 'Diario Tecnología';
 $app['description'] = 'Diario de noticias sobre tecnología e internet';
 $app['google_verification'] = '<meta name="google-site-verification" content="Rtv5hTi1A9Sv0DP6JzByri3LRkGheaRjrQCJmyb3cRQ" />';
+$app['bing_verification'] = '<meta name="msvalidate.01" content="00A5EBE2A1B3A67BE50B9A90285E5578" />';
 $app['yandex_verification'] = '<meta name="yandex-verification" content="dc3a8faacfe0a49d" />';
 $app[''] = '';
 
