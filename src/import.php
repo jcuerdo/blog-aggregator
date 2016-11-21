@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/rss.php';
+require_once __DIR__ . '/../config/rss.php';
 
 $reader = new Blog\Rss\RssReader();
 
