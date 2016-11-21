@@ -65,6 +65,6 @@ $app->rss = [
     'http://www.ewaldosoft.com/feed/',
     'http://feeds.feedburner.com/1000tipsinformaticos/feed1000',
     'http://www.ticbeat.com/feed/',
-    'http://www.adslzone.net/feed/',
+    //'http://www.adslzone.net/feed/',
     'http://bibliotecaprofesional.com/feed/',
 ];
