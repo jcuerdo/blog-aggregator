@@ -1,14 +1,14 @@
 {% if page is defined%}
     {% if page > 0 %}
         {% if searchTerm is defined%}
-            <a class="page pageprev" href="?page={{ page-1 }}&s={{ searchTerm }}">Página Anterior</a>
+            <a class="page pageprev btn btn-default" href="?page={{ page-1 }}&s={{ searchTerm }}">Página Anterior</a>
         {% else %}
-            <a class="page pageprev" href="?page={{ page-1 }}">Página Anterior</a>
+            <a class="page pageprev btn btn-default" href="?page={{ page-1 }}">Página Anterior</a>
         {% endif %}
     {% endif %}
     {% if searchTerm is defined%}
-        <a class="page pageprev" href="?page={{ page+1 }}&s={{ searchTerm }}">Página Siguiente</a>
+        <a class="page pageprev btn btn-default" href="?page={{ page+1 }}&s={{ searchTerm }}">Página Siguiente</a>
     {% else %}
-        <a class="page pageprev" href="?page={{ page+1 }}">Página Siguiente</a>
+        <a class="page pageprev btn btn-default"  href="?page={{ page+1 }}">Página Siguiente</a>
     {% endif %}
 {% endif %}

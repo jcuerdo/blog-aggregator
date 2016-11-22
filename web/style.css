@@ -6,6 +6,28 @@ body
     font-family:Arial,Helvetica,sans-serif;
 }
 
+h1, h1 a{
+    color:white;
+    font-family: fantasy;
+}
+h1, h1 a:hover{
+    color:darkgrey;
+}
+
+.navbar {
+    min-height: 100px;
+}
+
+body{
+    padding-top:100px;
+}
+
+em{
+    color:#ccc;
+    letter-spacing: 2px;
+    font-family: fantasy;
+}
+
 p
 {
     font-size: 13px;
@@ -19,6 +41,11 @@ a:hover{
 .post h2
 {
 font-size: 36px;
+}
+
+h2 a{
+   color: #222;
+    font-family: fantasy;
 }
 
 .pager a
@@ -91,3 +118,5 @@ img{
 .post + .post{
     border-top: 3px solid black;
 }
+
+.post p{font-size: 1.2em;font-family: "Times New Roman";}
