@@ -5,8 +5,12 @@
 </div>
 <div class="module">
 <form method="get" action="{{ app.url }}">
-    <input name="s" type="text" placeholder="Búsqueda...">
-    <input id="submit" type="submit" value="Buscar">
+    <div class="input-group">
+        <input name="s" type="text" class="form-control" placeholder="Búsqueda...">
+        <span class="input-group-btn">
+            <input id="submit" type="submit" class="btn btn-default" value="Buscar">
+        </span>
+    </div>
 </form>
 </div>
 {% if lastPosts is defined %}
