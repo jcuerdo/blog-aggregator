@@ -119,4 +119,4 @@ img{
     border-top: 3px solid black;
 }
 
-.post p{font-size: 1.2em;font-family: "Times New Roman";}
+.post *{font-size: 1.1em;font-family: "Verdana";}
