@@ -67,4 +67,5 @@ $app->rss = [
     'http://www.ticbeat.com/feed/',
     //'http://www.adslzone.net/feed/',
     'http://bibliotecaprofesional.com/feed/',
+    'http://www.diariomotor.com/feed/',
 ];
