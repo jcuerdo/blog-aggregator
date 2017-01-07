@@ -10,7 +10,8 @@
     "twig/twig": "^1.22",
     "symfony/twig-bridge": "^2.7",
     "jublonet/codebird-php": "^2.7",
-    "doctrine/dbal": "^2.5"
+    "doctrine/dbal": "^2.5",
+    "symfony/security": "^3.2"
   },
   "autoload": {
     "psr-4": {
