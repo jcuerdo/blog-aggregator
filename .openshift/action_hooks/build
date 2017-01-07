@@ -1,1 +1,0 @@
-composer install --working-dir=$OPENSHIFT_REPO_DIR
