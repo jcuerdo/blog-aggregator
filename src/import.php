@@ -2,12 +2,16 @@
 require_once __DIR__ . '/../config/rss.php';
 
 $reader = new Blog\Rss\RssReader();
+$postModel = new \Blog\Model\Post($app);
+$rssModel = new \Blog\Model\Rss($app);
+
+$databaseRss = $rssModel->getAll();
+
+$app->rss = array_merge($app->rss, $databaseRss);
 
 foreach($app->rss as $rss){
     echo "Importing $rss \n";
     $posts = $reader->getItems($rss);
-
-    $postModel = new \Blog\Model\Post($app);
 
     foreach($posts as $post)
     {

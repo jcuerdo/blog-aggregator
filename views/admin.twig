@@ -1,0 +1,22 @@
+{% extends 'layout/list.twig' %}
+{% block content %}
+    <div id="main-content" class="row">
+        <h2>Admin</h2>
+        <form action="addRss">
+            <input type="text" name="url" value="http://" />
+            <input type="submit" value="Add New" />
+        </form>
+        <ul>
+        {% for rss in rsss %}
+            <li class="rss">
+                {{rss}}
+                <form action="deleteRss">
+                    <input type="submit" value="Delete" /> <input type="hidden" name="url" value="{{ rss }}" />
+                </form>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
+{% block left %}
+{% endblock %}
