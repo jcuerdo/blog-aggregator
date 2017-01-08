@@ -10,7 +10,6 @@ $databaseRss = $rssModel->getAll();
 $app->rss = array_merge($app->rss, $databaseRss);
 
 foreach($app->rss as $rss){
-    $rssModel->insert($rss  );
     echo "Importing $rss \n";
     $posts = $reader->getItems($rss);
 
