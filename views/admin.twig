@@ -2,16 +2,23 @@
 {% block content %}
     <div id="main-content" class="row">
         <h2>Admin</h2>
+
+        <h3>Rss List</h3>
         <form action="addRss">
-            <input type="text" name="url" value="http://" />
-            <input type="submit" value="Add New" />
+            <div class="input-group">
+                <input type="text" class="form-control" name="url" value="http://" />
+                <span class="input-group-btn">
+                    <input type="submit" class="btn btn-primary" value="Add New" />
+                </span>
+            </div>
         </form>
-        <ul>
+        <br>
+        <br>
+<ul class="list-group">
         {% for rss in rsss %}
-            <li class="rss">
-                {{rss}}
+        <li class="list-group-item">
                 <form action="deleteRss">
-                    <input type="submit" value="Delete" /> <input type="hidden" name="url" value="{{ rss }}" />
+                    {{rss}} <input class="btn btn-primary" type="submit" value="Delete" /> <input type="hidden" name="url" value="{{ rss }}" />
                 </form>
             </li>
         {% endfor %}

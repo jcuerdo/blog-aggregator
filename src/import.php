@@ -1,16 +1,12 @@
 <?php
-require_once __DIR__ . '/../config/rss.php';
 
 $reader = new Blog\Rss\RssReader();
 $postModel = new \Blog\Model\Post($app);
 $rssModel = new \Blog\Model\Rss($app);
 
-$databaseRss = $rssModel->getAll();
-
-$app->rss = array_merge($app->rss, $databaseRss);
-
-foreach($app->rss as $rss){
-    $rssModel->insert($rss  );
+$rssList = $rssModel->getAll();
+echo "Start importing \n";
+foreach($rssList as $rss){
     echo "Importing $rss \n";
     $posts = $reader->getItems($rss);
 
