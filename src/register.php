@@ -16,3 +16,18 @@ $app->register(new Silex\Provider\HttpCacheServiceProvider(), array(
 $app->register(new Silex\Provider\UrlGeneratorServiceProvider());
 
 $app->register(new Silex\Provider\SessionServiceProvider());
+
+
+$app->register(new Silex\Provider\SecurityServiceProvider(), array(
+
+));
+
+$app['security.firewalls'] = array(
+    'admin' => array(
+        'pattern' => '^/admin/',
+        'http' => true,
+        'users' => array(
+            'admin' => array('ROLE_ADMIN', 'GFhUOqZRlyJqqqjfbyDbcKaM0RDrH4fXt/yomjZZzTwQXC7MHrns0vZMIjxvWG1VKoMI4e3RSIaj00YDluPLTA=='),
+        ),
+    ),
+);
