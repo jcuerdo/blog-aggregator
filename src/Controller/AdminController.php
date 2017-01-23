@@ -21,6 +21,9 @@ namespace Blog\Controller
             $adminController->get("/addRss", array( $this, 'addRss' ) )
                 ->bind( 'addRss' );
 
+            $adminController->get("/addPost", array( $this, 'addPost' ) )
+                ->bind( 'addPost' );
+
             return $adminController;
         }
 
@@ -58,6 +61,20 @@ namespace Blog\Controller
              */
             $rssModel = $app['rssModel'];
             $rssModel->insert($url);
+
+            return $app->redirect($app["url_generator"]->generate("admin"));
+        }
+
+        public function addPost( Application $app )
+        {
+            $title = $app['request']->get( 'title' );
+            $slug = $app['request']->get( 'slug' );
+            $content = $app['request']->get( 'content' );
+            /**
+             * @var Rss $rssModel
+             */
+            $postModel = $app['postModel'];
+            $postModel->insertPost($title, null, $slug, $content);
 
             return $app->redirect($app["url_generator"]->generate("admin"));
         }
