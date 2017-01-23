@@ -76,6 +76,9 @@ namespace Blog\Controller
             $postModel = $app['postModel'];
             $postModel->insertPost($title, null, $slug, $content);
 
+            $exporter = new \Blog\Twitter\Exporter();
+            $exporter->publishPost($title . ' - ' . $app['url'] . '/' . $slug);
+
             return $app->redirect($app["url_generator"]->generate("admin"));
         }
     }
