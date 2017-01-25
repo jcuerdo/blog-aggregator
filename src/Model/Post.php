@@ -36,6 +36,42 @@ class Post extends Db
         }
     }
 
+    public function updatePost($title, $content, $slag)
+    {
+
+        $sql = "UPDATE post set title = ?, content = ?  where slag = ?";
+
+        try {
+            $this->app['db']->executeQuery($sql, [
+                $title,
+                $content,
+                $slag
+            ]);
+            return true;
+        }
+        catch(\Exception $e){
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
+    public function deletePost($slag)
+    {
+
+        $sql = "DELETE FROM post where slag = ?";
+
+        try {
+            $this->app['db']->executeQuery($sql, [
+                $slag
+            ]);
+            return true;
+        }
+        catch(\Exception $e){
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
 
 
     public function getPosts($page = 0, $limit = 10 )
