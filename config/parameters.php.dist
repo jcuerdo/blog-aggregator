@@ -13,3 +13,4 @@ $app['banner_header'] = '';
 $app['banner_between_posts'] = '';
 $app['banner_in_single_post'] = '';
 $app['banner_up'] = '';
+$app['disqus_embed_js'] = '';
