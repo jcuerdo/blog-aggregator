@@ -1,28 +1,8 @@
-{% extends 'layout/list.twig' %}
+{% extends 'layout/admin.twig' %}
 {% block content %}
     <div id="main-content" class="row">
         <h2>Admin</h2>
-
-        <h3>Rss List</h3>
-        <form action="addRss">
-            <div class="input-group">
-                <input type="text" class="form-control" name="url" value="http://" />
-                <span class="input-group-btn">
-                    <input type="submit" class="btn btn-primary" value="Add New" />
-                </span>
-            </div>
-        </form>
-        <br>
-        <br>
-<ul class="list-group">
-        {% for rss in rsss %}
-        <li class="list-group-item">
-                <form action="deleteRss">
-                    {{rss}} <input class="btn btn-primary" type="submit" value="Delete" /> <input type="hidden" name="url" value="{{ rss }}" />
-                </form>
-            </li>
-        {% endfor %}
-        </ul>
+        {% include 'admin_menu.twig'%}
     </div>
 {% endblock %}
 {% block left %}

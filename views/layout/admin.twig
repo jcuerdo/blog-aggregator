@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'common/header.twig' %}
+<body>
+{% include 'common/nav.twig'%}
+<div class="container">
+    {{ app.banner_header|raw  }}
+    {% block content %}{% endblock %}
+</div>
+<footer>
+    {% include 'common/footer.twig'%}
+</footer>
+</body>
+</html>

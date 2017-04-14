@@ -6,9 +6,9 @@ class Exporter
 {
     public function publishPost($status, $image = null)
     {
-        \Codebird\Codebird::setConsumerKey("YuPk4DmS6toGxkHx1D1SNw", "1eypDfHR90EUYGMUa7HdVHSxXeI9IkcAaAwkqP8Eo");
+        \Codebird\Codebird::setConsumerKey("n6zRGJk1d1PVY9if1UBJnyWB0", "hPnpabm8fUeeg1FR0HS3p0zvRdanJ90w0yRDch2NJACqr6Qtai");
         $cb = \Codebird\Codebird::getInstance();
-        $cb->setToken("1886557171-Zaq8aoMR71FzlBvPZpAp2Vi6YtqqYXc6FN0HEm9", "dW6RafSITZLzVuED5rkkRetWyOMun9RMywI0KJbR1E");
+        $cb->setToken("1886557171-VdAyNjORhEz1laz6N27LlQCYWhh2pqu2GPddDiI", "Cet3UAyQG67AfR7Ni5vabd2xbX7ESau5zUc19EfjdcC1B");
 
         $params = array(
             'status' => $status

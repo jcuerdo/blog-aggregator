@@ -1,0 +1,42 @@
+{% extends 'layout/admin.twig' %}
+{% block content %}
+    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            height: "100%",
+            menubar: false,
+            plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table contextmenu paste code'
+            ],
+            toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image code',
+            content_css: '//www.tinymce.com/css/codepen.min.css'
+        });
+    </script>
+    <div id="main-content" class="row">
+        <h2>Admin - New post</h2>
+        {% include 'admin_menu.twig'%}
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <h3>New post</h3>
+            <form action="{{ path('addPost') }}" method="post">
+
+                    <input type="text" class="form-control" name="title" value="" />
+
+                <br>
+                <div class="input-group">
+                    <textarea  class="form-control" name="content"></textarea>
+                </div>
+                <br>
+                <div class="input-group">
+                <span class="input-group-btn">
+                    <input type="submit" class="btn btn-primary" value="Publish" />
+                </span>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+{% block left %}
+{% endblock %}
