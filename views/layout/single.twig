@@ -8,6 +8,7 @@
     <div class="row post">
         <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
             {% block content %}{% endblock %}
+            {{ app.disqus|raw}}
         </div>
         <div class="left hidden-xs col-sm-4 col-md-4 col-lg-4">
             {% block left %}
