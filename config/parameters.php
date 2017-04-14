@@ -6,8 +6,7 @@ $app['description'] = 'Diario de noticias sobre tecnología e internet';
 $app['google_verification'] = '<meta name="google-site-verification" content="Rtv5hTi1A9Sv0DP6JzByri3LRkGheaRjrQCJmyb3cRQ" />';
 $app['bing_verification'] = '<meta name="msvalidate.01" content="00A5EBE2A1B3A67BE50B9A90285E5578" />';
 $app['yandex_verification'] = '<meta name="yandex-verification" content="dc3a8faacfe0a49d" />';
-$app[''] = '';
-
+$app['disqus_embed_js'] = 'https://www-diariotecnologia-es.disqus.com/embed.js';
 $app['analytics'] = "<script>
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
