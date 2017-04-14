@@ -46,9 +46,9 @@ class Post extends Db
                 $content,
                 $slag
             ]);
-            if(!$this->app['debug'] && \apc_exists($slug))
+            if(!$this->app['debug'] && \apc_exists($slag))
             {
-                return  \apc_delete($slug);
+                return  \apc_delete($slag);
             }
             return true;
         }
@@ -67,9 +67,9 @@ class Post extends Db
             $this->app['db']->executeQuery($sql, [
                 $slag
             ]);
-            if(!$this->app['debug'] && \apc_exists($slug))
+            if(!$this->app['debug'] && \apc_exists($slag))
             {
-                return  \apc_delete($slug);
+                return  \apc_delete($slag);
             }
             return true;
         }
