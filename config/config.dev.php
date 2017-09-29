@@ -18,6 +18,7 @@ $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
     ),
 ));
 
+
 $app['debug'] = true;
 
 require_once 'parameters.php';
