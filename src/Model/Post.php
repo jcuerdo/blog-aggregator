@@ -103,7 +103,7 @@ class Post extends Db
     {
         $start = $page * $limit;
         $cacheKey = 'index' . '-' . $searchTerm . '-' . $page;
-        if(!$this->app['debug'] && \apc_exists($cacheKey))
+        if($this->app['apc'] && \apc_exists($cacheKey))
         {
             return  \apc_fetch($cacheKey);
         }
@@ -115,7 +115,6 @@ class Post extends Db
              */
             $stmt = $this->app['db']->prepare($sql);
 
-            $stmt = $this->app['db']->prepare($sql);
             $stmt->bindParam(':search', $searchTerm, PDO::PARAM_STR);
             $stmt->bindParam(':start', $start, PDO::PARAM_INT);
             $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
@@ -125,7 +124,7 @@ class Post extends Db
                 return array();
             }
 
-            if(!$this->app['debug']){
+            if($this->app['apc']){
                 \apc_add($cacheKey, $result, self::INDEX_TTL);
             }
             return $result;
@@ -141,7 +140,7 @@ class Post extends Db
 
     public function getPost($slug)
     {
-        if(!$this->app['debug'] && \apc_exists($slug))
+        if($this->app['apc'] && \apc_exists($slug))
         {
             return  \apc_fetch($slug);
         }
@@ -155,7 +154,7 @@ class Post extends Db
             {
                 return null;
             }
-            if(!$this->app['debug']){
+            if($this->app['apc']){
                 \apc_add($slug, $result, self::SINGLE_POST_TTL);
             }
             return $result;
