@@ -38,7 +38,6 @@ class Post extends Db
 
     public function updatePost($title, $content, $slag)
     {
-
         $sql = "UPDATE post set title = ?, content = ?  where slag = ?";
 
         try {
@@ -47,6 +46,10 @@ class Post extends Db
                 $content,
                 $slag
             ]);
+            if(!$this->app['debug'] && \apc_exists($slag))
+            {
+                return  \apc_delete($slag);
+            }
             return true;
         }
         catch(\Exception $e){
@@ -64,6 +67,10 @@ class Post extends Db
             $this->app['db']->executeQuery($sql, [
                 $slag
             ]);
+            if(!$this->app['debug'] && \apc_exists($slag))
+            {
+                return  \apc_delete($slag);
+            }
             return true;
         }
         catch(\Exception $e){

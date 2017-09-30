@@ -1,0 +1,14 @@
+{% if page is defined%}
+    {% if page > 0 %}
+        {% if searchTerm is defined%}
+            <a class="page pageprev" href="?page={{ page-1 }}&s={{ searchTerm }}">Página Anterior</a>
+        {% else %}
+            <a class="page pageprev" href="?page={{ page-1 }}">Página Anterior</a>
+        {% endif %}
+    {% endif %}
+    {% if searchTerm is defined%}
+        <a class="page pageprev" href="?page={{ page+1 }}&s={{ searchTerm }}">Página Siguiente</a>
+    {% else %}
+        <a class="page pageprev" href="?page={{ page+1 }}">Página Siguiente</a>
+    {% endif %}
+{% endif %}
