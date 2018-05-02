@@ -19,9 +19,9 @@
         <script async src="https://static.addtoany.com/menu/page.js"></script>
         <!-- AddToAny END -->
             <span><a href="{{post.link}}">Artículo original</a></span>
-            {{ app.banner_in_single_post|raw  }}
             <br>
             <p>{{post.content | raw}}</p>
+            {{ app.banner_in_single_post|raw  }}
     </div>
 {% endblock %}
 {% block left %}
