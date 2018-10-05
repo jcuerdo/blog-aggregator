@@ -9,9 +9,13 @@ echo "Start importing \n";
 foreach($rssList as $rss){
     echo "Importing $rss \n";
     $posts = $reader->getItems($rss);
-
+    $count = 0;
     foreach($posts as $post)
     {
+	if($count > 3){
+	 break;
+	}
+	$count ++;
         $title = isset($post->title) ? (string)$post->title : null;
         $link = isset($post->link) ? (string)$post->link : null;
         $date = isset($post->pubDate) ? (string)$post->pubDate : null;
