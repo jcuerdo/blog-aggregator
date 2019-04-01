@@ -20,11 +20,11 @@ foreach($rssList as $rss){
         $link = isset($post->link) ? (string)$post->link : null;
         $date = isset($post->pubDate) ? (string)$post->pubDate : null;
         $description = isset($post->description) ? (string) $post->description: null;
-        $image = $post->children('media', True)->content->attributes();
 
-        if ($image) {
+        if ($post->children('media', True)->content) {
+            $image = $post->children('media', True)->content->attributes();
             $imageHtml = sprintf("<p class='main-image'><img src='%s'/></p>", $image->url);
-            $description = $imageHtml . $description;die($description);
+            $description = $imageHtml . $description;
         }
 
         if (strlen($description) < 1500) {
