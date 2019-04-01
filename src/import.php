@@ -12,14 +12,20 @@ foreach($rssList as $rss){
     $count = 0;
     foreach($posts as $post)
     {
-	if($count > 3){
-	 break;
-	}
-	$count ++;
+        if($count > 3){
+            break;
+        }
+        $count ++;
         $title = isset($post->title) ? (string)$post->title : null;
         $link = isset($post->link) ? (string)$post->link : null;
         $date = isset($post->pubDate) ? (string)$post->pubDate : null;
         $description = isset($post->description) ? (string) $post->description: null;
+        $image = $post->children('media', True)->content->attributes();
+
+        if ($image) {
+            $imageHtml = sprintf("<p class='main-image'><img src='%s'/></p>", $image->url);
+            $description = $imageHtml . $description;die($description);
+        }
 
         if (strlen($description) < 1500) {
             echo "Discarted description too short: " . $description;
