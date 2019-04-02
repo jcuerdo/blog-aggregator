@@ -17,3 +17,4 @@ $app['disqus_embed_js'] = '';
 $app['text_original_post'] = 'Articulo original';
 $app['custom_css'] = '';
 $app['import_max_length'] = 1500;
+$app['import_max_posts'] = 3;
