@@ -12,7 +12,7 @@ foreach($rssList as $rss){
     $count = 0;
     foreach($posts as $post)
     {
-        if($count > 3){
+        if($count > isset($app['import_max_posts']) ? $app['import_max_posts'] ? 3){
             break;
         }
         $count ++;
@@ -27,7 +27,7 @@ foreach($rssList as $rss){
             $description = $imageHtml . $description;
         }
 
-        if (strlen($description) < 1500) {
+        if (strlen($description) < isset($app['import_max_length']) ? $app['import_max_length'] ? 1500) {
             echo "Discarted description too short: " . $description;
             continue;
         }
