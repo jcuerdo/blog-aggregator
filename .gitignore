@@ -1,3 +1,5 @@
 /.idea/*
 .idea/
-
+/config/config.prod.php
+/config/config.dev.php
+/config/parameters.php
