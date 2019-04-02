@@ -25,3 +25,11 @@
     </ul>
 </div>
 {% endif %}
+{% if app.email is defined %}
+    <div class="module">
+        <h2>Contacto</h2>
+        <p>
+            <span>{{ app.email }}</span>
+        </p>
+    </div>
+{% endif %}
