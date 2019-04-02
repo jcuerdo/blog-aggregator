@@ -21,7 +21,7 @@
             </script>
             <script async src="https://static.addtoany.com/menu/page.js"></script>
             <!-- AddToAny END -->
-            <span><a href="{{post.link}}">Artículo original</a></span>
+            <span><a class="original" href="{{post.link}}">{% if app.text_original is defined %}{%else%}Artículo original{%endif%}</a></span>
             <p>{{post.content | raw}}</p>
             {% if postNumber == 1 %}
                 {{ app.banner_between_posts|raw  }}
