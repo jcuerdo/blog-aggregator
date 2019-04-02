@@ -1,8 +1,10 @@
+{% if app.banner_up is defined %}
 <div class="module">
     <center>
         {{ app.banner_up|raw }}
     </center>
 </div>
+{% endif %}
 <div class="module">
 <form method="get" action="{{ app.url }}">
     <div class="input-group">
