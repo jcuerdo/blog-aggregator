@@ -14,3 +14,5 @@ $app['banner_between_posts'] = '';
 $app['banner_in_single_post'] = '';
 $app['banner_up'] = '';
 $app['disqus_embed_js'] = '';
+$app['text_original_post'] = 'Articulo original';
+$app['custom_css'] = '';
