@@ -12,7 +12,8 @@ foreach($rssList as $rss){
     $count = 0;
     foreach($posts as $post)
     {
-        if($count > isset($app['import_max_posts']) ? $app['import_max_posts'] ? 3){
+        $import_max_posts = isset($app['import_max_posts']) ? $app['import_max_posts'] : 3;
+        if($count > $import_max_posts){
             break;
         }
         $count ++;
