@@ -6,6 +6,7 @@ $rssModel = new \Blog\Model\Rss($app);
 
 $rssList = $rssModel->getAll();
 echo "Start importing \n";
+$imported = 0;
 foreach($rssList as $rss){
     echo "Importing $rss \n";
     $posts = $reader->getItems($rss);
@@ -27,18 +28,20 @@ foreach($rssList as $rss){
             $imageHtml = sprintf("<p class='main-image'><img src='%s'/></p>", $image->url);
             $description = $imageHtml . $description;
         }
+        $import_max_length = isset($app['import_max_length']) ? $app['import_max_length'] : 1500;
+        if (strlen($description) < $import_max_length) {
 
-        if (strlen($description) < isset($app['import_max_length']) ? $app['import_max_length'] : 1500) {
-            echo "Discarted description too short: " . $description;
+            echo sprintf("Discarted description too short: Length %s , expected %s \n", strlen($description), $import_max_length);
             continue;
         }
 
         if ($slug = $postModel->insertPost($title, $date, $link, $description)) {
             $exporter = new \Blog\Twitter\Exporter();
             $exporter->publishPost($title . ' - ' . $app['url'] . '/' . $slug);
+            $imported++;
         }
     }
     echo "Imported finished \n";
 }
 
-echo "Proccess finished imported \n";
+echo sprintf("Proccess finished imported %s posts \n", $imported);
