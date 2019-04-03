@@ -176,7 +176,6 @@ class Post extends Db
 
     private function generateSlag($title)
     {
-        $title = iconv('UTF-8', 'ASCII//TRANSLIT', $title);
         $title = preg_replace("/[^a-zA-Z0-9\/_|+ -]/", '', $title);
         $title = strtolower(trim($title, '-'));
         $title = preg_replace("/[\/_|+ -]+/", '-', $title);
