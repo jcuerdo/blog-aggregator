@@ -28,7 +28,7 @@ foreach($rssList as $rss){
             $description = $imageHtml . $description;
         }
 
-        if (strlen($description) < isset($app['import_max_length']) ? $app['import_max_length'] ? 1500) {
+        if (strlen($description) < isset($app['import_max_length']) ? $app['import_max_length'] : 1500) {
             echo "Discarted description too short: " . $description;
             continue;
         }
