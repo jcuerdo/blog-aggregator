@@ -1,10 +1,27 @@
 {%if app.request.get('isApp') != '1' %}
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div>
-            <h1><a href="{{ path('home') }}">{{ app.name }}</a></h1>
-            <em>{{ app.description }}</em>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div>
+                <h1><a href="{{ path('home') }}">{{ app.name }}</a></h1>
+                <em>{{ app.description }}</em>
+            </div>
         </div>
+    </nav>
+{% else %}
+    <style>
+        body{
+            padding-top:0px;
+        }
+    </style>
+    <div class="module">
+        <form method="get" action="{{ app.url }}">
+            <div class="input-group">
+                <input name="isApp" type="hidden"  value="1">
+                <input name="s" type="text" class="form-control" placeholder="Búsqueda...">
+                <span class="input-group-btn">
+            <input id="submit" type="submit" class="btn btn-default" value="Buscar">
+        </span>
+            </div>
+        </form>
     </div>
-</nav>
 {% endif %}

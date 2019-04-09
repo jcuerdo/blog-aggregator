@@ -1,14 +1,29 @@
 {% if page is defined%}
-    {% if page > 0 %}
-        {% if searchTerm is defined%}
-            <a class="page pageprev btn btn-default" href="?page={{ page-1 }}&s={{ searchTerm }}">Página Anterior</a>
-        {% else %}
-            <a class="page pageprev btn btn-default" href="?page={{ page-1 }}">Página Anterior</a>
+    {%if app.request.get('isApp') != '1' %}
+        {% if page > 0 %}
+            {% if searchTerm is defined%}
+                <a class="page pageprev btn btn-default" href="?page={{ page-1 }}&s={{ searchTerm }}">Página Anterior</a>
+            {% else %}
+                <a class="page pageprev btn btn-default" href="?page={{ page-1 }}">Página Anterior</a>
+            {% endif %}
         {% endif %}
-    {% endif %}
-    {% if searchTerm is defined%}
-        <a class="page pageprev btn btn-default" href="?page={{ page+1 }}&s={{ searchTerm }}">Página Siguiente</a>
+        {% if searchTerm is defined%}
+            <a class="page pageprev btn btn-default" href="?page={{ page+1 }}&s={{ searchTerm }}">Página Siguiente</a>
+        {% else %}
+            <a class="page pageprev btn btn-default"  href="?page={{ page+1 }}">Página Siguiente</a>
+        {% endif %}
     {% else %}
-        <a class="page pageprev btn btn-default"  href="?page={{ page+1 }}">Página Siguiente</a>
+        {% if page > 0 %}
+            {% if searchTerm is defined%}
+                <a class="page pageprev btn btn-default" href="?page={{ page-1 }}&s={{ searchTerm }}&isApp=1">Página Anterior</a>
+            {% else %}
+                <a class="page pageprev btn btn-default" href="?page={{ page-1 }}&isApp=1">Página Anterior</a>
+            {% endif %}
+        {% endif %}
+        {% if searchTerm is defined%}
+            <a class="page pageprev btn btn-default" href="?page={{ page+1 }}&s={{ searchTerm }}&isApp=1">Página Siguiente</a>
+        {% else %}
+            <a class="page pageprev btn btn-default"  href="?page={{ page+1 }}&isApp=1">Página Siguiente</a>
+        {% endif %}
     {% endif %}
 {% endif %}
