@@ -1,3 +1,4 @@
+{%if app.request.get('isApp') != '1' %}
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div>
@@ -6,3 +7,4 @@
         </div>
     </div>
 </nav>
+{% endif %}
