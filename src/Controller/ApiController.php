@@ -12,10 +12,10 @@ namespace Blog\Controller
         {
             $indexController = $app['controllers_factory'];
 
-            $indexController->get("/", array( $this, 'api_index' ) )
+            $indexController->get("/", array( $this, 'index' ) )
                 ->bind( 'api_home' );
 
-            $indexController->get("/{slug}", array( $this, 'api_post' ) )
+            $indexController->get("/{slug}", array( $this, 'post' ) )
                 ->bind( 'api_post' );
 
             return $indexController;
