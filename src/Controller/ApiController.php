@@ -5,6 +5,8 @@ namespace Blog\Controller
     use Silex\ControllerProviderInterface;
     use Symfony\Component\HttpFoundation\JsonResponse;
     use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+    use Symfony\Component\HttpFoundation\Response;
+    use Symfony\Component\HttpFoundation\Request;
 
     class ApiController implements ControllerProviderInterface
     {
@@ -17,6 +19,10 @@ namespace Blog\Controller
 
             $indexController->get("/{slug}", array( $this, 'post' ) )
                 ->bind( 'api_post' );
+            
+            $app->after(function (Request $request, Response $response) {
+                $response->headers->set('Access-Control-Allow-Origin', '*');
+            });
 
             return $indexController;
         }
