@@ -29,4 +29,13 @@
     <style type="text/css" media="screen">
         {{ app.custom_css|raw }}
     </style>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes-umd.min.js" async></script>
+
+    <script>
+        $(document).ready(function () {
+            $('img').addClass('lazyload');
+        });
+    </script>
+    
 </head>
