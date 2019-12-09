@@ -22,19 +22,22 @@ foreach($rssList as $rss){
         $link = isset($post->link) ? (string)$post->link : null;
         $date = isset($post->pubDate) ? (string)$post->pubDate : null;
         $description = isset($post->description) ? (string) $post->description: null;
+        $postImage = null;
 
         if ($post->children('media', True)->content) {
             $image = $post->children('media', True)->content->attributes();
             $imageHtml = sprintf("<p class='main-image'><img src='%s'/></p>", $image->url);
             $description = $imageHtml . $description;
+            $postImage = $image->url;
         }
+
         $import_max_length = isset($app['import_max_length']) ? $app['import_max_length'] : 1500;
         if (strlen($description) < $import_max_length) {
             echo sprintf("Discarted description too short: Length %s , expected %s \n", strlen($description), $import_max_length);
             continue;
         }
-
-        if ($slug = $postModel->insertPost($title, $date, $link, $description)) {
+        
+        if ($slug = $postModel->insertPost($title, $date, $link, $description, $postImage)) {
             $exporter = new \Blog\Twitter\Exporter();
             $exporter->publishPost($title . ' - ' . $app['url'] . '/' . $slug);
             $totalImported++;

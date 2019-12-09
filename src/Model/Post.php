@@ -13,12 +13,12 @@ class Post extends Db
     const SINGLE_POST_TTL = 10000000;
     const INDEX_TTL = 3600;
 
-    public function insertPost($title, $date, $link, $content)
+    public function insertPost($title, $date, $link, $content, $image = null)
     {
         $slag = $this->generateSlag($title);
         $date = $this->generateDate($date);
 
-        $sql = "INSERT INTO post (title, slag, date, link, content) VALUES(?,?,?,?,?)";
+        $sql = "INSERT INTO post (title, slag, date, link, content, image) VALUES(?,?,?,?,?,?)";
 
         try {
             $this->app['db']->executeQuery($sql, [
@@ -26,7 +26,8 @@ class Post extends Db
                 $slag,
                 $date,
                 $link,
-                $content
+                $content,
+                $image
             ]);
             return $slag;
         }
