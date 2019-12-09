@@ -35,7 +35,7 @@ namespace Blog\Controller
             if($searchTerm){
                 $posts = ($postModel->searchPosts($searchTerm, $page));
             } else{
-                $posts = ($postModel->getPosts($page,15));
+                $posts = ($postModel->getPosts($page,20));
             }
 
             if (!$posts) {
