@@ -23,15 +23,7 @@ namespace Blog\Controller
             $app->after(function (Request $request, Response $response) {
                 $response->headers->set('Access-Control-Allow-Origin', '*');
             });
-
-            $app->finish(function (Request $request, Response $response) use ($app) {
-                /**
-                 * @var \Blog\Model\Visit $visitModel
-                 */
-                $visitModel = $app['visitModel'];
-                $visitModel->insert( $request->getRequestUri(),$request->headers->get('User-Agent') , $request->getClientIp());
-            });
-
+            
             return $indexController;
         }
 
