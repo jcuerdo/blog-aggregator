@@ -50,7 +50,7 @@ $app->finish(function (Request $request, Response $response) use ($app) {
     $elasticClient = $app['elasticClient'];
 
     $params = [
-        'index' => $app['name'],
+        'index' => $app['index'],
         'body' => [
             'url' => $request->getRequestUri(),
             'user-agent' => $request->headers->get('User-Agent'),
@@ -59,5 +59,8 @@ $app->finish(function (Request $request, Response $response) use ($app) {
         ]
     ];
 
+
     $elasticClient->index($params);
+
+
 });
