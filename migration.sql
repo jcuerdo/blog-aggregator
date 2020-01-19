@@ -16,3 +16,12 @@ CREATE TABLE `rss` (
   `url` varchar(300) DEFAULT NULL,
   UNIQUE KEY `url` (`url`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `visit` (
+  `url` varchar(512) DEFAULT '',
+  `ip` varchar(32) DEFAULT '',
+  `agent` varchar(512) DEFAULT NULL,
+  `extra` text,
+  `date` datetime DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
