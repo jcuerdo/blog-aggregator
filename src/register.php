@@ -1,5 +1,8 @@
 <?php
 
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/../views',
     'twig.options'		=> array(
@@ -31,3 +34,11 @@ $app['security.firewalls'] = array(
         ),
     ),
 );
+
+$app->finish(function (Request $request, Response $response) use ($app) {
+    /**
+     * @var \Blog\Model\Visit $visitModel
+     */
+    $visitModel = $app['visitModel'];
+    $visitModel->insert( $request->getRequestUri(),$request->headers->get('User-Agent') , $request->getClientIp());
+});
