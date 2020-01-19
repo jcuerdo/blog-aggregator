@@ -43,4 +43,21 @@ $app->finish(function (Request $request, Response $response) use ($app) {
         $visitModel = $app['visitModel'];
         $visitModel->insert( $request->getRequestUri(),$request->headers->get('User-Agent') , $request->getClientIp());
     }
+
+    /**
+     * @var \Elasticsearch\Client $elasticClient
+     */
+    $elasticClient = $app['elasticClient'];
+
+    $params = [
+        'index' => $app['name'],
+        'body' => [
+            'url' => $request->getRequestUri(),
+            'user-agent' => $request->headers->get('User-Agent'),
+            'ip' =>  $request->getClientIp(),
+            'origin' => strpos($request->getRequestUri(), '/api/') === 0 ? 'api' : 'web',
+        ]
+    ];
+
+    $elasticClient->index($params);
 });
