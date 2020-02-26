@@ -24,11 +24,19 @@ foreach($rssList as $rss){
         $description = isset($post->description) ? (string) $post->description: null;
         $postImage = null;
 
-        if ($post->children('media', True)->content) {
+        if (false && $post->children('media', True)->content) {
             $image = $post->children('media', True)->content->attributes();
             $imageHtml = sprintf("<p class='main-image'><img src='%s'/></p>", $image->url);
             $description = $imageHtml . $description;
             $postImage = $image->url;
+        }
+        else {
+            $htmlDom = new DOMDocument();
+            @$htmlDom->loadHTML($description);
+            $imageTags = $htmlDom->getElementsByTagName('img');
+            if(count($imageTags) > 0 ) {
+                $postImage = $imageTags[0]->getAttribute('src');
+            }
         }
 
         $import_max_length = isset($app['import_max_length']) ? $app['import_max_length'] : 1500;
