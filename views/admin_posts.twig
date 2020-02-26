@@ -25,6 +25,7 @@
                         <a href="{{ path('editPost',{'slug':post.slag}) }}">Edit</a>
                         <a href="{{ path('deletePost',{'slug':post.slag}) }}">Delete</a>
                         <a target="_blank" href="{{ path('post',{'slug':post.slag}) }}">View online</a>
+                        <a href="{{ path('editFirebaseNotification',{'slug':post.slag}) }}">Send firebase</a>
                     </td>
                 </tr>
                 {% endfor %}

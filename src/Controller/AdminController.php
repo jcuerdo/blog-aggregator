@@ -27,6 +27,12 @@ namespace Blog\Controller
             $adminController->get("/post/{slug}/edit", array( $this, 'editPost' ) )
                 ->bind( 'editPost' );
 
+            $adminController->get("/post/{slug}/editFirebase", array( $this, 'editFirebaseNotification' ) )
+                ->bind( 'editFirebaseNotification' );
+
+            $adminController->post("/post/{slug}/sendFirebase", array( $this, 'sendFirebaseNotification' ) )
+                ->bind( 'sendFirebaseNotification' );
+
             $adminController->get("/deleteRss", array( $this, 'deleteRss' ) )
                 ->bind( 'deleteRss' );
 
@@ -165,6 +171,55 @@ namespace Blog\Controller
                 ]
             ), 200);
         }
+
+        public function editFirebaseNotification( Application $app )
+        {
+            $slug = $app['request']->get( 'slug' );
+            $postModel = $app['postModel'];
+            $post = $postModel->getPost($slug);
+            return new Response($app['twig']->render('admin_editfirebase.twig',[
+                    'post' => $post
+                ]
+            ), 200);
+        }
+
+        public function sendFirebaseNotification( Application $app )
+        {
+            $slag = $app['request']->get( 'slag' );
+            $title = $app['request']->get( 'title' );
+            $description = $app['request']->get( 'description' );
+            $image = $app['request']->get( 'image' );
+            $firebaseKey = $app["firebase_key"];
+
+            if($firebaseKey){
+                $curl = curl_init();
+
+                curl_setopt_array($curl, array(
+                    CURLOPT_URL => "https://fcm.googleapis.com/fcm/send",
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_ENCODING => "",
+                    CURLOPT_MAXREDIRS => 10,
+                    CURLOPT_TIMEOUT => 0,
+                    CURLOPT_FOLLOWLOCATION => true,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => "POST",
+                    CURLOPT_POSTFIELDS => "{\n\"condition\" : \"'notifications' in topics\",\n \"notification\" : {\n \t \"title\": \"$title\",\n     \"body\" : \"$description\",\n     \"image\": \"$image\"\n },\n \"data\" : {\n     \"slag\" : \"$slag\"\n }\n}",
+                    CURLOPT_HTTPHEADER => array(
+                        "Authorization: key=$firebaseKey",
+                        "Content-Type: application/json"
+                    ),
+                ));
+
+
+                $response = curl_exec($curl);
+
+                curl_close($curl);
+            }
+
+
+            return $app->redirect($app["url_generator"]->generate("adminPosts"));
+
+    }
 
         public function deletePost( Application $app )
         {
