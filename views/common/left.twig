@@ -6,7 +6,15 @@
 </div>
 {% endif %}
 <div class="module">
-<script async src='https://cse.google.com/cse.js?cx=partner-pub-6904186947817626:1623071591'></script><div class="gcse-searchbox-only"></div></div>
+<form method="get" action="{{ app.url }}">
+            <div class="input-group">
+                <input name="s" type="text" class="form-control" placeholder="Búsqueda...">
+                <span class="input-group-btn">
+            <input id="submit" type="submit" class="btn btn-default" value="Buscar">
+        </span>
+            </div>
+        </form>
+</div>
 {% if lastPosts is defined %}
 <div class="module">
 <h2>Últimos posts</h2>
