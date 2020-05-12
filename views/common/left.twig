@@ -1,11 +1,3 @@
-{% if app.email is defined %}
-    <div class="module">
-    <h2>Contacto</h2>
-           <center>
-            <strong></strong><span><a href="mailto:{{ app.email }}">{{ app.email }}</a></span>
-          </center>
-
-    </div>
 <div class="module">
 <form method="get" action="{{ app.url }}">
             <div class="input-group">
@@ -16,6 +8,14 @@
             </div>
         </form>
 </div>
+{% if app.email is defined %}
+    <div class="module">
+    <h2>Contacto</h2>
+           <center>
+            <strong></strong><span><a href="mailto:{{ app.email }}">{{ app.email }}</a></span>
+          </center>
+
+    </div>
 {% endif %}
 {% if app.banner_up is defined %}
 <div class="module">
