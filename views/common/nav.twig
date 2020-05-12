@@ -1,10 +1,19 @@
 {%if app.request.get('isApp') != '1' %}
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
+<div class="row">
+    <div class="col-sm-9">
             <div>
                 <h1><a href="{{ path('home') }}">{{ app.name }}</a></h1>
                 <em>{{ app.description }}</em>
             </div>
+    </div>
+    <div class="col-sm-3">
+        {% if app.email is defined %}
+            <strong>Contacto: </strong><span><a href="mailto:{{ app.email }}">{{ app.email }}</a></span>
+        {% endif %}
+    </div>
+  </div>
         </div>
     </nav>
 {% else %}
