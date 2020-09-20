@@ -11,7 +11,7 @@
     "symfony/twig-bridge": "^2.7",
     "jublonet/codebird-php": "^2.7",
     "doctrine/dbal": "^2.5",
-    "symfony/security": "2.8.15",
+    "symfony/security": "2.8.50",
     "elasticsearch/elasticsearch": "^7.5"
   },
   "autoload": {
