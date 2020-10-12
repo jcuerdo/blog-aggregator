@@ -23,6 +23,11 @@ foreach($rssList as $rss){
         $date = isset($post->pubDate) ? (string)$post->pubDate : null;
         $description = isset($post->description) ? (string) $post->description: null;
         $postImage = null;
+        
+        $description=preg_replace('/class=".*?"/', '', $description);
+        $description=preg_replace('/id=".*?"/', '', $description);
+        $description = preg_replace("/<\\/?" . "script" . "(.|\\s)*?>/","",$description);
+
 
         if (false && $post->children('media', True)->content) {
             $image = $post->children('media', True)->content->attributes();
