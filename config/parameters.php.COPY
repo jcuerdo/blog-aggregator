@@ -1,0 +1,92 @@
+<?php
+
+$app['url'] = 'http://www.diariotecnologia.es';
+$app['name'] = 'Diario Tecnología';
+$app['description'] = 'Diario de noticias sobre tecnología e internet';
+$app['google_verification'] = '<meta name="google-site-verification" content="Rtv5hTi1A9Sv0DP6JzByri3LRkGheaRjrQCJmyb3cRQ" />';
+$app['bing_verification'] = '<meta name="msvalidate.01" content="00A5EBE2A1B3A67BE50B9A90285E5578" />';
+$app['yandex_verification'] = '<meta name="yandex-verification" content="dc3a8faacfe0a49d" />';
+$app['disqus_embed_js'] = 'https://www-diariotecnologia-es.disqus.com/embed.js';
+$app['analytics'] = "<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');
+
+	__gaTracker('create', 'UA-4862846-23', 'auto');
+	__gaTracker('set', 'forceSSL', true);
+	__gaTracker('set', 'anonymizeIp', true);
+	__gaTracker('require', 'displayfeatures');
+	__gaTracker('require', 'linkid', 'linkid.js');
+	__gaTracker('send','pageview');
+
+</script>";
+
+$app['banner_mobile'] = '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-6904186947817626",
+    enable_page_level_ads: true
+  });
+</script>';
+$app['banner_header'] = '
+
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Una sola página - 3 (para móviles, www.lineadecodigo.es) -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-6904186947817626"
+         data-ad-slot="9308815995"
+         data-ad-format="auto"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>';
+$app['banner_between_posts'] = '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-6904186947817626"
+                     data-ad-slot="3262282391"
+                     data-ad-format="auto"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+                ';
+$app['banner_in_single_post'] = '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-format="autorelaxed"
+     data-ad-client="ca-pub-6904186947817626"
+     data-ad-slot="8161210299"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>';
+$app['banner_up'] = '        
+<p>
+<a target="_blank" href="http://www.rastreadordechollos.com"><img src="https://i.ibb.co/tDhfjq0/rastreador.jpg"/></a>
+</p>
+<br/>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- Una sola página - 3 (para móviles, www.lineadecodigo.es) -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-6904186947817626"
+             data-ad-slot="9308815995"
+             data-ad-format="auto"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+	</script>';
+
+$app['email'] = 'info@diariotecnologia.es';
+
+$app['custom_css'] = '
+   body{  background-image: linear-gradient(to right, #f7f7f7, #f9ºf9f9);text-shadow:none !important;}
+                .module,.post{
+                background-image: linear-gradient(to bottom, #FFF,#FFF);
+                padding:10px;
+                margin:10px;
+                border-radius: 3px;
+                border:1px solid #CCC;
+        }
+';

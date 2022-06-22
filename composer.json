@@ -11,12 +11,16 @@
     "symfony/twig-bridge": "^2.7",
     "jublonet/codebird-php": "^2.7",
     "doctrine/dbal": "^2.5",
-    "symfony/security": "2.8.50",
-    "elasticsearch/elasticsearch": "^7.5"
+    "symfony/security": "2.8.50"
   },
   "autoload": {
     "psr-4": {
       "Blog\\": "src/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true
     }
   }
 }

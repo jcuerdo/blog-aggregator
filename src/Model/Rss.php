@@ -47,7 +47,8 @@ class Rss extends Db
 
         try{
             $stmt = $this->app['db']->prepare($sql);
-            $stmt->execute();
+ 
+	    $stmt->execute();
             if ( !$result = $stmt->fetchAll() )
             {
                 return array();

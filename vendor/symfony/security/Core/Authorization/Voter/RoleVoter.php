@@ -24,8 +24,6 @@ class RoleVoter implements VoterInterface
     private $prefix;
 
     /**
-     * Constructor.
-     *
      * @param string $prefix The role prefix
      */
     public function __construct($prefix = 'ROLE_')
@@ -38,7 +36,7 @@ class RoleVoter implements VoterInterface
      */
     public function supportsAttribute($attribute)
     {
-        return is_string($attribute) && 0 === strpos($attribute, $this->prefix);
+        return \is_string($attribute) && 0 === strpos($attribute, $this->prefix);
     }
 
     /**

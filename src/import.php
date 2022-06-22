@@ -5,6 +5,7 @@ $postModel = new \Blog\Model\Post($app);
 $rssModel = new \Blog\Model\Rss($app);
 
 $rssList = $rssModel->getAll();
+
 echo "Start importing \n";
 $totalImported = 0;
 foreach($rssList as $rss){
