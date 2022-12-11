@@ -28,6 +28,9 @@ foreach($rssList as $rss){
         $description=preg_replace('/class=".*?"/', '', $description);
         $description=preg_replace('/id=".*?"/', '', $description);
         $description = preg_replace("/<\\/?" . "script" . "(.|\\s)*?>/","",$description);
+        $description = preg_replace("/{\"videoId(.)+}/","",$description);
+        $description = preg_replace("/\(function[\s\S]*;/","",$description);
+        $description = preg_replace("/La noticia[\s\S]*\./","",$description);
 
 
         if (false && $post->children('media', True)->content) {
