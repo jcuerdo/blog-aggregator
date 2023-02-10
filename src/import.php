@@ -26,6 +26,7 @@ foreach($rssList as $rss){
         $postImage = null;
         
         $description=preg_replace('/class=".*?"/', '', $description);
+        $description=preg_replace('/style=".*?"/', '', $description);
         $description=preg_replace('/id=".*?"/', '', $description);
         $description = preg_replace("/<\\/?" . "script" . "(.|\\s)*?>/","",$description);
         $description = preg_replace("/{\"videoId(.)+}/","",$description);
