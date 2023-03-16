@@ -159,7 +159,7 @@ namespace Blog\Controller
              */
             $gpt = $app['gpt'];
 
-            $content = json_decode($app['request']->getContent());
+            $content = $app['request']->getContent();
 
             $result = $gpt->generate($content);
 

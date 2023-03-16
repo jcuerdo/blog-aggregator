@@ -30,21 +30,22 @@
                         {
                             method: 'POST',
                             url: "/admin/gpt",
-                            data: $('#query').html(),
+                            data: $('#query').val(),
                             success : function(data) {
                                 console.log(data)
                                 $('#gpt').html('Gpt created');
                                 $('#title').val(data.title);
-                                $('#content').html(data.body);
+                                $('#content').val(data.body);
                             },
                             error : function(request,error)
                             {
                                 data = request.responseText;
                                 $('#gpt').html('Gpt error');
+                                console.log((data));
                                 const obj = JSON.parse(data);
                                 console.log((obj));
                                 $('#title').val(obj.title);
-                                $('#content').html(obj.body);
+                                $('#content').val(obj.body);
                             },
                             complete: function () {
                                 $('#gpt').html('Gpt created');
