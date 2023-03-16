@@ -28,8 +28,11 @@
 
                     $.ajax(
                         {
+                            method: 'POST',
                             url: "/admin/gpt",
+                            data: '{"query" : "' + $('#query').html() + '"}',
                             success : function(data) {
+                                console.log(data)
                                 $('#gpt').html('Gpt created');
                                 $('#title').val(data.title);
                                 $('#content').html(data.body);
@@ -52,7 +55,7 @@
             </script>
 
             <div class="gpt">
-            <textarea rows="5" type="text" class="form-control" name="query" value="">
+            <textarea rows="5" type="text" class="form-control" id="query" name="query" value="">
 Articulo en www.diariotecnologia.es de 2000 palabras en html con estructura
 <h1></h1>
 <h3></h3>

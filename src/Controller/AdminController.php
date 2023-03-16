@@ -51,7 +51,7 @@ namespace Blog\Controller
             $adminController->get("/deletePost", array( $this, 'deletePost' ) )
                 ->bind( 'deletePost' );
 
-            $adminController->get("/gpt", array( $this, 'gpt' ) )
+            $adminController->post("/gpt", array( $this, 'gpt' ) )
                 ->bind( 'gpt' );
 
             return $adminController;
@@ -154,14 +154,16 @@ namespace Blog\Controller
 
         public function gpt( Application $app )
         {
-            $query = $app['request']->get( 'query' );
-
             /**
              * @var Gpt $gpt
              */
             $gpt = $app['gpt'];
 
-            $result = $gpt->generate($query);
+            $content = json_decode($app['request']->getContent());
+
+
+            //$result = $gpt->generate($content['query']);
+            $result = $gpt->generate('Articulo en www.diariotecnologia.es de 2000 palabras');
 
             return new JsonResponse($result, 200);
         }
