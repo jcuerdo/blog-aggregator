@@ -18,16 +18,61 @@
     <div id="main-content" class="row">
         <h2>Admin - New post</h2>
         {% include 'admin_menu.twig'%}
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-            <h3>New post</h3>
-            <form action="{{ path('addPost') }}" method="post">
 
-                    <input type="text" class="form-control" name="title" value="" />
+        <div class="col-xs-24 col-sm-24 col-md-24 col-lg-24">
+            <h3>GPT</h3>
+
+            <script>
+                function gpt() {
+                    $('#gpt').html('LOADING...');
+
+                    $.ajax(
+                        {
+                            url: "/admin/gpt",
+                            success : function(data) {
+                                $('#gpt').html('Gpt created');
+                                const obj = JSON.parse(data);
+                                console.log((obj));
+                                $('#title').val(obj.title);
+                                $('#content').html(obj.body);
+                            },
+                            error : function(request,error)
+                            {
+                                data = request.responseText;
+                                $('#gpt').html('Gpt error');
+                                const obj = JSON.parse(data);
+                                console.log((obj));
+                                $('#title').val(obj.title);
+                                $('#content').html(obj.body);
+                            },
+                            complete: function () {
+                                $('#gpt').html('Gpt created');
+                            }
+                        }
+                    );
+                }
+            </script>
+
+            <div class="gpt">
+            <textarea rows="5" type="text" class="form-control" name="query" value="">
+Articulo en www.diariotecnologia.es de 2000 palabras en html con estructura
+<h1></h1>
+<h3></h3>
+<p></p>
+            </textarea>
+                <button id="gpt" onclick="gpt()">GPT</button>
+            </div>
+
+            <h3>New post</h3>
+
+            <form action="{{ path('addPost') }}" method="post">
+                    <label for="title">Title</label>
+                    <input type="text" class="form-control" name="title" id="title" value="" />
 
                 <br>
-                <div class="input-group">
-                    <textarea  class="form-control" name="content"></textarea>
-                </div>
+                <label for="content">Content</label>
+
+                    <textarea rows="20" style=""  class="form-control " id="content" name="content"></textarea>
                 <br>
                 <div class="input-group">
                 <span class="input-group-btn">

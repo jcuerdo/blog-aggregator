@@ -15,8 +15,6 @@ $query = 'Articulo en www.diariotecnologia.es de 2000 palabras en html con estru
 <h1></h1>
 <h3></h3>
 <p></p>
-
-escrito por un profesional
 ';
 $result = $gpt->generate($query);
 
