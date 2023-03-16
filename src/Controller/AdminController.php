@@ -1,5 +1,4 @@
 <?php
-
 namespace Blog\Controller
 {
     use Blog\Library\Gpt;
@@ -162,8 +161,7 @@ namespace Blog\Controller
              */
             $gpt = $app['gpt'];
 
-            //$result = $gpt->generate($query);
-            $result = [];
+            $result = $gpt->generate($query);
 
             return new JsonResponse($result, 200);
         }
