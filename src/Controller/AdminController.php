@@ -1,9 +1,12 @@
 <?php
+
 namespace Blog\Controller
 {
+    use Blog\Library\Gpt;
     use Blog\Model\Rss;
     use Silex\Application;
     use Silex\ControllerProviderInterface;
+    use Symfony\Component\HttpFoundation\JsonResponse;
     use Symfony\Component\HttpFoundation\Response;
 
     class AdminController implements ControllerProviderInterface
@@ -48,6 +51,9 @@ namespace Blog\Controller
 
             $adminController->get("/deletePost", array( $this, 'deletePost' ) )
                 ->bind( 'deletePost' );
+
+            $adminController->get("/gpt", array( $this, 'gpt' ) )
+                ->bind( 'gpt' );
 
             return $adminController;
         }
@@ -145,6 +151,21 @@ namespace Blog\Controller
             return new Response($app['twig']->render('admin_newpost.twig',[
                 ]
             ), 200);
+        }
+
+        public function gpt( Application $app )
+        {
+            $query = $app['request']->get( 'query' );
+
+            /**
+             * @var Gpt $gpt
+             */
+            $gpt = $app['gpt'];
+
+            //$result = $gpt->generate($query);
+            $result = [];
+
+            return new JsonResponse($result, 200);
         }
 
         public function savePost( Application $app )

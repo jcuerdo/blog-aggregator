@@ -16,6 +16,10 @@ $app['visitModel'] = function ($app) {
 };
 
 
+$app['gpt'] = function ($app) {
+    return new \Blog\Library\Gpt($app);
+};
+
 $app['elasticClient'] = function ($app) {
 
     $builder = Elasticsearch\ClientBuilder::create();

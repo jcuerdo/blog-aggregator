@@ -11,7 +11,8 @@
     "symfony/twig-bridge": "^2.7",
     "jublonet/codebird-php": "^2.7",
     "doctrine/dbal": "^2.5",
-    "symfony/security": "2.8.50"
+    "symfony/security": "2.8.50",
+    "openai-php/client": "^0.3.5"
   },
   "autoload": {
     "psr-4": {
