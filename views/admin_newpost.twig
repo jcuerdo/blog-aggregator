@@ -30,6 +30,7 @@
                         {
                             url: "/admin/gpt",
                             success : function(data) {
+                                console.log(data)
                                 $('#gpt').html('Gpt created');
                                 const obj = JSON.parse(data);
                                 console.log((obj));
