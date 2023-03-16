@@ -13,7 +13,7 @@ $gpt = $app['gpt'];
 
 $query = 'Articulo en www.diariotecnologia.es de 2000 palabras en html con estructura
 <h1></h1>
-<h2></h2>
+<h3></h3>
 <p></p>
 
 escrito por un profesional
