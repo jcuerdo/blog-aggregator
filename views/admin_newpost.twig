@@ -30,7 +30,7 @@
                         {
                             method: 'POST',
                             url: "/admin/gpt",
-                            data: '{"query" : "' + $('#query').html() + '"}',
+                            data: $('#query').html(),
                             success : function(data) {
                                 console.log(data)
                                 $('#gpt').html('Gpt created');

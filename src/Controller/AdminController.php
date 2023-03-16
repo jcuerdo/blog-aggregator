@@ -161,9 +161,7 @@ namespace Blog\Controller
 
             $content = json_decode($app['request']->getContent());
 
-
-            //$result = $gpt->generate($content['query']);
-            $result = $gpt->generate('Articulo en www.diariotecnologia.es de 2000 palabras');
+            $result = $gpt->generate($content);
 
             return new JsonResponse($result, 200);
         }
