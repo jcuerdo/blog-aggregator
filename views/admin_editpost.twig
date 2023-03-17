@@ -12,8 +12,8 @@
                     <input type="hidden" class="form-control" name="slug" value="{{ post.slag }}" />
 
                 <br>
-                <div class="input-group">
-                    <textarea  class="form-control" name="content">{{ post.content | raw }}</textarea>
+
+                    <textarea rows="20" class="form-control" name="content">{{ post.content | raw }}</textarea>
                     <script>
                         tinymce.init({
                             selector: 'textarea',
@@ -27,7 +27,7 @@
                             ]
                         });
                     </script>
-                </div>
+          
                 <br>
                 <div class="input-group">
                 <span class="input-group-btn">
