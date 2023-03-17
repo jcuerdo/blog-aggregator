@@ -20,6 +20,10 @@ $app['gpt'] = function ($app) {
     return new \Blog\Library\Gpt($app);
 };
 
+$app['images'] = function ($app) {
+    return new \Blog\Library\Images($app);
+};
+
 $app['elasticClient'] = function ($app) {
 
     $builder = Elasticsearch\ClientBuilder::create();
