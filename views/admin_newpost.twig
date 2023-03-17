@@ -22,7 +22,7 @@
                                 $('#gpt').html('Gpt created');
                                 $('#title').val(data.title);
                                 $('#content').val(data.body);
-                                tinymce.get("content").setContent(obj.body);
+                                tinymce.get("content").setContent(data.body);
                             },
                             error : function(request,error)
                             {
