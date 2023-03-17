@@ -47,9 +47,9 @@ class Post extends Db
                 $content,
                 $slag
             ]);
-            if($this->app['apc'] && \apc_exists($slag))
+            if($this->app['apc'] && \apcu_exists($slag))
             {
-                return  \apc_delete($slag);
+                return  \apcu_delete($slag);
             }
             return true;
         }
@@ -68,9 +68,9 @@ class Post extends Db
             $this->app['db']->executeQuery($sql, [
                 $slag
             ]);
-            if($this->app['apc'] && \apc_exists($slag))
+            if($this->app['apc'] && \apcu_exists($slag))
             {
-                return  \apc_delete($slag);
+                return  \apcu_delete($slag);
             }
             return true;
         }
@@ -111,9 +111,9 @@ class Post extends Db
     {
         $start = $page * $limit;
         $cacheKey = 'index' . '-' . $searchTerm . '-' . $page;
-        if($this->app['apc'] && \apc_exists($cacheKey))
+        if($this->app['apc'] && \apcu_exists($cacheKey))
         {
-            return  \apc_fetch($cacheKey);
+            return  \apcu_fetch($cacheKey);
         }
         $sql = "SELECT * FROM post WHERE content like :search or title like :search ORDER BY date DESC LIMIT :start ,:limit";
         $searchTerm = "%$searchTerm%";
@@ -133,7 +133,7 @@ class Post extends Db
             }
 
             if($this->app['apc']){
-                \apc_add($cacheKey, $result, self::INDEX_TTL);
+                \apcu_add($cacheKey, $result, self::INDEX_TTL);
             }
             return $result;
         }
@@ -148,9 +148,9 @@ class Post extends Db
 
     public function getPost($slug)
     {
-        if($this->app['apc'] && \apc_exists($slug))
+        if($this->app['apc'] && \apcu_exists($slug))
         {
-            return  \apc_fetch($slug);
+            return  \apcu_fetch($slug);
         }
 
         $sql = "SELECT * FROM post where slag = ?";
@@ -163,7 +163,7 @@ class Post extends Db
                 return null;
             }
             if($this->app['apc']){
-                \apc_add($slug, $result, self::SINGLE_POST_TTL);
+                \apcu_add($slug, $result, self::SINGLE_POST_TTL);
             }
             return $result;
         }
