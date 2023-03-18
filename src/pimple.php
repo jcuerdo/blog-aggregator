@@ -24,6 +24,10 @@ $app['images'] = function ($app) {
     return new \Blog\Library\Images($app);
 };
 
+$app['google_client'] = function ($app) {
+    return new \Blog\Library\GoogleClient($app);
+};
+
 $app['elasticClient'] = function ($app) {
 
     $builder = Elasticsearch\ClientBuilder::create();

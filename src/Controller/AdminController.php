@@ -137,7 +137,13 @@ namespace Blog\Controller
              * @var Rss $rssModel
              */
             $postModel = $app['postModel'];
-            $postModel->insertPost($title, null, $slug, $content);
+            $slug = $postModel->insertPost($title, null, $slug, $content);
+
+            /**
+             * @var \Blog\Library\GoogleClient $googleClient
+             */
+            $googleClient = $app['google_client'];
+            $googleClient->indexUrl($slug);
 
             $exporter = new \Blog\Twitter\Exporter();
             $exporter->publishPost($title . ' - ' . $app['url'] . '/' . $slug);

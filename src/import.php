@@ -60,6 +60,13 @@ foreach($rssList as $rss){
             $exporter->publishPost($title . ' - ' . $app['url'] . '/' . $slug);
             $totalImported++;
             $imported ++;
+
+            /**
+             * @var Blog\Library\GoogleClient $googleClient
+             */
+            $googleClient = $app['google_client'];
+            $googleClient->indexUrl($slug);
+
         }
     }
     echo sprintf("Imported finished for rss %s, total imported %s \n", $rss, $imported);
