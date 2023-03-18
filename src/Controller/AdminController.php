@@ -51,7 +51,7 @@ namespace Blog\Controller
             $adminController->get("/deletePost", array( $this, 'deletePost' ) )
                 ->bind( 'deletePost' );
 
-            $adminController->get("/gpt", array( $this, 'gpt' ) )
+            $adminController->post("/gpt", array( $this, 'gpt' ) )
                 ->bind( 'gpt' );
 
             return $adminController;
@@ -137,7 +137,13 @@ namespace Blog\Controller
              * @var Rss $rssModel
              */
             $postModel = $app['postModel'];
-            $postModel->insertPost($title, null, $slug, $content);
+            $slug = $postModel->insertPost($title, null, $slug, $content);
+
+            /**
+             * @var \Blog\Library\GoogleClient $googleClient
+             */
+            $googleClient = $app['google_client'];
+            $googleClient->indexUrl($slug);
 
             $exporter = new \Blog\Twitter\Exporter();
             $exporter->publishPost($title . ' - ' . $app['url'] . '/' . $slug);
@@ -154,14 +160,14 @@ namespace Blog\Controller
 
         public function gpt( Application $app )
         {
-            $query = $app['request']->get( 'query' );
-
             /**
              * @var Gpt $gpt
              */
             $gpt = $app['gpt'];
 
-            $result = $gpt->generate($query);
+            $content = $app['request']->getContent();
+
+            $result = $gpt->generate($content);
 
             return new JsonResponse($result, 200);
         }
