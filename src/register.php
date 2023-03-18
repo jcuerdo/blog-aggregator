@@ -25,6 +25,11 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
 
 ));
 
+$app->register(new \Silex\Provider\MonologServiceProvider(), array(
+    'monolog.logfile' => $app['log_dir'] ?? __DIR__ . '/../logs/app.log',
+    'monolog.level' => \Monolog\Logger::WARNING,
+));
+
 $app['security.firewalls'] = array(
     'admin' => array(
         'pattern' => '^/admin/',
@@ -42,24 +47,6 @@ $app->finish(function (Request $request, Response $response) use ($app) {
          */
         $visitModel = $app['visitModel'];
         $visitModel->insert( $request->getRequestUri(),$request->headers->get('User-Agent') , $request->getClientIp());
-	    
-	/**
-         * @var \Elasticsearch\Client $elasticClient
-         */
-         $elasticClient = $app['elasticClient'];
-
-	    $params = [
-		'index' => $app['index'],
-		'body' => [
-		    'url' => $request->getRequestUri(),
-		    'user-agent' => $request->headers->get('User-Agent'),
-		    'ip' =>  $request->getClientIp(),
-		    'origin' => strpos($request->getRequestUri(), '/api/') === 0 ? 'api' : 'web',
-		]
-	    ];
-
-
-         $elasticClient->index($params);
     }
 
 });

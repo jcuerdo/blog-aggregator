@@ -3,6 +3,7 @@ require_once __DIR__ . '/../config/config.prod.php';
 require_once __DIR__.'/../src/register.php';
 
 $app->error(function (\Exception $e, $code) use($app) {
+    $app['monolog']->error($e->getMessage(), $e->getTrace());
     switch ($code) {
         case 404:
             $message = $app['twig']->render('error/404.twig');
