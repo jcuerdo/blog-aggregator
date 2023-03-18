@@ -15,7 +15,7 @@ class GoogleClient
     {
         $client = new \Google\Client;
 
-        $client->setAuthConfig($this->app['google_verification']);
+        $client->setAuthConfig($this->app['google_verification_json']);
         $client->addScope(\Google\Service\Indexing::INDEXING);
 
 
@@ -29,7 +29,7 @@ class GoogleClient
         }';
 
         $response = $httpClient->post($endpoint, ['body' => $content]);
-        
+
         $status_code = $response->getStatusCode();
 
         return $status_code == 200;
