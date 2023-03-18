@@ -1,9 +1,11 @@
 <?php
 namespace Blog\Controller
 {
+    use Blog\Library\Gpt;
     use Blog\Model\Rss;
     use Silex\Application;
     use Silex\ControllerProviderInterface;
+    use Symfony\Component\HttpFoundation\JsonResponse;
     use Symfony\Component\HttpFoundation\Response;
 
     class AdminController implements ControllerProviderInterface
@@ -48,6 +50,9 @@ namespace Blog\Controller
 
             $adminController->get("/deletePost", array( $this, 'deletePost' ) )
                 ->bind( 'deletePost' );
+
+            $adminController->post("/gpt", array( $this, 'gpt' ) )
+                ->bind( 'gpt' );
 
             return $adminController;
         }
@@ -132,7 +137,13 @@ namespace Blog\Controller
              * @var Rss $rssModel
              */
             $postModel = $app['postModel'];
-            $postModel->insertPost($title, null, $slug, $content);
+            $slug = $postModel->insertPost($title, null, $slug, $content);
+
+            /**
+             * @var \Blog\Library\GoogleClient $googleClient
+             */
+            $googleClient = $app['google_client'];
+            $googleClient->indexUrl($slug);
 
             $exporter = new \Blog\Twitter\Exporter();
             $exporter->publishPost($title . ' - ' . $app['url'] . '/' . $slug);
@@ -145,6 +156,20 @@ namespace Blog\Controller
             return new Response($app['twig']->render('admin_newpost.twig',[
                 ]
             ), 200);
+        }
+
+        public function gpt( Application $app )
+        {
+            /**
+             * @var Gpt $gpt
+             */
+            $gpt = $app['gpt'];
+
+            $content = $app['request']->getContent();
+
+            $result = $gpt->generate($content);
+
+            return new JsonResponse($result, 200);
         }
 
         public function savePost( Application $app )

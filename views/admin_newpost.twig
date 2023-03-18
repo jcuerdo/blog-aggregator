@@ -1,33 +1,80 @@
 {% extends 'layout/admin.twig' %}
 {% block content %}
-    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
-    <script>
-        tinymce.init({
-            selector: 'textarea',
-            height: "100%",
-            menubar: false,
-            plugins: [
-                'advlist autolink lists link image charmap print preview anchor',
-                'searchreplace visualblocks code fullscreen',
-                'insertdatetime media table contextmenu paste code'
-            ],
-            toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image code',
-            content_css: '//www.tinymce.com/css/codepen.min.css'
-        });
-    </script>
+    <script src="https://cdn.tiny.cloud/1/a1kctg8gzkm8gdirr628t0ff8d88jhv30a482aknzchuxwom/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     <div id="main-content" class="row">
         <h2>Admin - New post</h2>
         {% include 'admin_menu.twig'%}
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-            <h3>New post</h3>
-            <form action="{{ path('addPost') }}" method="post">
 
-                    <input type="text" class="form-control" name="title" value="" />
+        <div class="col-xs-24 col-sm-24 col-md-24 col-lg-24">
+            <h3>GPT</h3>
+
+            <script>
+                function gpt() {
+                    $('#gpt').html('LOADING...');
+
+                    $.ajax(
+                        {
+                            method: 'POST',
+                            url: "/admin/gpt",
+                            data: $('#query').val(),
+                            success : function(data) {
+                                console.log('SUCCESS')
+                                console.log(data)
+                                $('#gpt').html('Gpt created');
+                                $('#title').val(data.title);
+                                $('#content').val(data.body);
+                                tinymce.get("content").setContent(data.body);
+                            },
+                            error : function(request,error)
+                            {
+                                console.log('ERROR')
+                                data = request.responseText;
+                                $('#gpt').html('Gpt error');
+                                console.log((data));
+                                const obj = JSON.parse(data);
+                                console.log((obj));
+                                $('#title').val(obj.title);
+                                $('#content').val(obj.body);
+                                tinymce.get("content").setContent(obj.body);
+                            },
+                            complete: function () {
+                                $('#gpt').html('Gpt created');
+                            }
+                        }
+                    );
+                }
+            </script>
+
+            <div class="gpt">
+                <textarea rows="5" type="text" class="form-control" id="query" name="query" value="">Articulo en www.diariotecnologia.es de 2000 palabras en html usando una estructura <h1><h3><p><h3><p><h3><p><h3><p><h3><p></textarea>
+                <button id="gpt" onclick="gpt()">GPT</button>
+            </div>
+
+            <h3>New post</h3>
+
+            <form action="{{ path('addPost') }}" method="post">
+                    <label for="title">Title</label>
+                    <input type="text" class="form-control" name="title" id="title" value="" />
 
                 <br>
-                <div class="input-group">
-                    <textarea  class="form-control" name="content"></textarea>
-                </div>
+                <label for="content">Content</label>
+
+                    <textarea rows="20" style=""  class="form-control " id="content" name="content"></textarea>
+
+                <script>
+                    tinymce.init({
+                        selector: '#content',
+                        plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
+                        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+                        tinycomments_mode: 'embedded',
+                        tinycomments_author: 'Author name',
+                        mergetags_list: [
+                            { value: 'First.Name', title: 'First Name' },
+                            { value: 'Email', title: 'Email' },
+                        ]
+                    });
+                </script>
+
                 <br>
                 <div class="input-group">
                 <span class="input-group-btn">
