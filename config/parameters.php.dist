@@ -26,3 +26,4 @@ $app['gpt_key'] = '';
 $app['unsplash_key'] = '';
 $app['google_verification_json'] = '';
 $app['log_dir'] = null;
+$app['email'] = 'example@example.com';

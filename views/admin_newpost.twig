@@ -6,8 +6,6 @@
         {% include 'admin_menu.twig'%}
 
         <div class="col-xs-24 col-sm-24 col-md-24 col-lg-24">
-            <h3>GPT</h3>
-
             <script>
                 function gpt() {
                     $('#gpt').html('LOADING...');
@@ -45,10 +43,13 @@
                 }
             </script>
 
-            <div class="gpt">
+            <div class="box">
+                <h3>Generate GPT</h3>
                 <textarea rows="5" type="text" class="form-control" id="query" name="query" value="">Articulo en www.diariotecnologia.es de 2000 palabras en html usando una estructura <h1><h3><p><h3><p><h3><p><h3><p><h3><p></textarea>
                 <button id="gpt" onclick="gpt()">GPT</button>
             </div>
+
+            <div class="box">
 
             <h3>New post</h3>
 
@@ -82,6 +83,7 @@
                 </span>
                 </div>
             </form>
+            </div>
         </div>
     </div>
 {% endblock %}
