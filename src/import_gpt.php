@@ -13,11 +13,38 @@ $gpt = $app['gpt'];
  */
 $googleClient = $app['google_client'];
 
-$query = 'Articulo en www.diariotecnologia.es de 2000 palabras en html con estructura
+$topics = [
+    "consejos de arquitectura de software",
+    "desarrollo de microservicios",
+    "arquitectura hexagonal",
+    "importancia del Pair y del mob programming",
+    "como usar clean code y buenas practicas de programacion",
+    "usos de chatgpt para programadores",
+    "consejos para ser un buen engineer manager",
+    "consejos para ser un buen software engineer",
+    "una tecnologia aleatoria relaccionada con php",
+    "una tecnologia aleatoria relaccionada con javascript",
+    "una tecnologia aleatoria relaccionada con java",
+    "una tecnologia aleatoria relaccionada con golang",
+    "una tecnologia aleatoria relaccionada con devops",
+    "un tema aleatorio sobre testing de software",
+    "un framework web aleatorio",
+    "optimizacion de bases de datos",
+    "programación asíncrona usando rabbitmq o kafka",
+    "algoritmia avanzada en cualquier lenguaje de programacion",
+        "alerting y monitoring en un saas",
+        "tutorial aleatorio usando aws",
+            "escalar aplicaciones java en aws",
+                "escalar aplicaciones php en aws",
+
+];
+
+
+$query = sprintf('Articulo bien estructurado sobre %s de 2000 palabras en html con estructura
 <h1></h1>
 <h3></h3>
 <p></p>
-';
+', $items[array_rand($items)]);
 $result = $gpt->generate($query);
 
 $postModel = new \Blog\Model\Post($app);
