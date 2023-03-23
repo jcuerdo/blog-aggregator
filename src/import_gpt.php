@@ -44,7 +44,7 @@ $query = sprintf('Articulo bien estructurado sobre %s de 2000 palabras en html c
 <h1></h1>
 <h3></h3>
 <p></p>
-', $items[array_rand($items)]);
+', $topics[array_rand($topics)]);
 $result = $gpt->generate($query);
 
 $postModel = new \Blog\Model\Post($app);
