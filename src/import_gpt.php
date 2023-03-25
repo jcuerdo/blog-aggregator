@@ -27,15 +27,15 @@ $topics = [
     "una tecnologia relaccionada con java",
     "una tecnologia relaccionada con golang",
     "una tecnologia relaccionada con devops",
-    "testing de software",
+    "testing de aplicaciones web y moviles",
     "un framework web",
     "optimizacion de bases de datos",
     "programación asíncrona usando rabbitmq o kafka",
     "algoritmia avanzada en cualquier lenguaje de programacion",
         "alerting y monitoring en un saas",
         "tutorial de uso de tecnologia aws",
-            "escalar aplicaciones java en aws",
-                "escalar aplicaciones php en aws",
+            "escalar aplicaciones con aws",
+                "escalar aplicaciones con azure",
 
 ];
 
