@@ -14,11 +14,11 @@ $gpt = $app['gpt'];
 $googleClient = $app['google_client'];
 
 $topics = [
-    "consejos de arquitectura de software",
+    "arquitectura de software",
     "desarrollo de microservicios",
     "arquitectura hexagonal",
-    "importancia del Pair y del mob programming",
-    "como usar clean code y buenas practicas de programacion",
+    "pair y del mob programming",
+    "clean code y buenas practicas de programacion",
     "usos de chatgpt para programadores",
     "consejos para ser un buen engineer manager",
     "consejos para ser un buen software engineer",
@@ -36,6 +36,7 @@ $topics = [
         "tutorial de uso de tecnologia aws",
             "escalar aplicaciones con aws",
                 "escalar aplicaciones con azure",
+    "usos de chatgpt para aumentar la productividad",
 
 ];
 
