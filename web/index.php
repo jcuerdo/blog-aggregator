@@ -6,7 +6,7 @@ $app->error(function (\Exception $e, $code) use($app) {
     $app['monolog']->error($e->getMessage(), $e->getTrace());
     switch ($code) {
         case 404:
-            $app->redirect($app["url_generator"]->generate("home"));
+            return $app->redirect($app["url_generator"]->generate("home"));
             $message = $app['twig']->render('error/404.twig');
             break;
         default:
