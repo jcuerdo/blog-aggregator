@@ -11,7 +11,8 @@ class Post extends Db
      * @var int
      */
     const SINGLE_POST_TTL = 10000000;
-    const INDEX_TTL = 3600;
+    const INDEX_TTL = 10;
+    const SEARCH_TTL = 3600;
 
     public function insertPost($title, $date, $link, $content, $image = null)
     {
@@ -86,6 +87,12 @@ class Post extends Db
     {
         $start = $page * $limit;
         $sql = "SELECT * FROM post ORDER BY date DESC LIMIT :start,:limit";
+        $cacheKey = 'index' . '-' . $page . '-' . $limit;
+        
+        if($this->app['apc'] && \apcu_exists($cacheKey))
+        {
+            return  \apcu_fetch($cacheKey);
+        }
 
         try{
             $stmt = $this->app['db']->prepare($sql);
@@ -95,6 +102,10 @@ class Post extends Db
             if ( !$result = $stmt->fetchAll() )
             {
                 return array();
+            }
+            
+            if($this->app['apc']){
+                \apcu_add($cacheKey, $result, self::INDEX_TTL);
             }
 
             return $result;
@@ -110,7 +121,7 @@ class Post extends Db
     public function searchPosts($searchTerm = '', $page = 0, $limit = 10 )
     {
         $start = $page * $limit;
-        $cacheKey = 'index' . '-' . $searchTerm . '-' . $page;
+        $cacheKey = 'search' . '-' . $searchTerm . '-' . $page;
         if($this->app['apc'] && \apcu_exists($cacheKey))
         {
             return  \apcu_fetch($cacheKey);
@@ -133,7 +144,7 @@ class Post extends Db
             }
 
             if($this->app['apc']){
-                \apcu_add($cacheKey, $result, self::INDEX_TTL);
+                \apcu_add($cacheKey, $result, self::SEARCH_TTL);
             }
             return $result;
         }
