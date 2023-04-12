@@ -4,3 +4,5 @@
 /config/config.dev.php
 /config/parameters.php
 /logs
+app.log
+diariotecnologia-google.json
