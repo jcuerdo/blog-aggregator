@@ -12,19 +12,6 @@
                 {% endif %}
             </h2>
             <span>{{post.date | date('d/m/Y')}}</span>
-            <!-- AddToAny BEGIN -->
-            <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
-            <a class="a2a_dd" href="https://www.addtoany.com/share?linkurl={{ path('post', {'slug' : post.slag}) }}&amp;linkname="></a>
-                <a class="a2a_button_facebook"></a>
-                <a class="a2a_button_twitter"></a>
-                <a class="a2a_button_whatsapp"></a>
-            </div>
-            <script>
-                var a2a_config = a2a_config || {};
-                a2a_config.linkurl = "{{ app.url }}/{{post.slag}}";
-            </script>
-            <script async src="https://static.addtoany.com/menu/page.js"></script>
-            <!-- AddToAny END -->
                 {% if post.link and post.link != '#' %}
                     <span><a class="original" href="{{post.link}}">{% if app.text_original_post is defined %}{{app.text_original_post}}{%else%}Artículo original{%endif%}</a></span>
                 {% endif %}
