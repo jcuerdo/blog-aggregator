@@ -16,7 +16,7 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-   
+
 
     {{ app.yandex_verification|raw }}
     {{ app.google_verification|raw }}
@@ -28,7 +28,7 @@
         {{ app.custom_css|raw }}
         body
         {
-
+           font-size: 20px;
             color: black;
             text-shadow: .5px .5px #ddd;
             font-family:Arial,Helvetica,sans-serif;
@@ -42,7 +42,7 @@
 
         h1, h1 a{
             color:white;
-            font-family: Arial;
+            font-family: apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
         }
         h1, h1 a:hover{
             color:darkgrey;
@@ -155,11 +155,36 @@
             border-top: 1px solid #000;
         }
 
+	.module ul li a {
+color:#4792BF !important;
+}
+
         .post + .post{
             border-top: 2px solid #F2F4F6;
         }
 
-        .post *{font-family: "Verdana";}
+        .post *{
+color:rgb(17,17,17) !important;
+font-size:1em;
+font-family: "Charter, Georgia, serif";
+}
+
+.post h2 {
+color:#111111;
+font-family: apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+font-weight: 700;
+}
+
+.post a{
+color:#4792BF !important;
+}
+
+.post h2 a{
+color:#4792BF !important;
+font-family: apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.post span{font-height:700;   font-style: italic;color:#555 !important;}
 
         .rss {margin: 5px 15px;}
 
@@ -204,7 +229,7 @@
 
 
     </style>
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes-umd.min.js" async></script>
 
     <script>
@@ -212,5 +237,5 @@
             $('img').addClass('lazyload');
         });
     </script>
-    
+
 </head>
