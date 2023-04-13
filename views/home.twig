@@ -11,7 +11,7 @@
                     {{post.title}}
                 {% endif %}
             </h2>
-            <span>{{post.date | date('d/m/Y')}}</span>
+            Publicado: <span>{{post.date | date('d/m/Y')}}</span> Por: <span>{app.name}</span>
                 {% if post.link and post.link != '#' %}
                     <span><a class="original" href="{{post.link}}">{% if app.text_original_post is defined %}{{app.text_original_post}}{%else%}Artículo original{%endif%}</a></span>
                 {% endif %}
