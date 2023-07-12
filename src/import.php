@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__.'/../src/pimple.php';
+
 
 $reader = new Blog\Rss\RssReader();
 $postModel = new \Blog\Model\Post($app);
@@ -65,8 +67,12 @@ foreach($rssList as $rss){
              * @var Blog\Library\GoogleClient $googleClient
              */
             $googleClient = $app['google_client'];
-            $googleClient->indexUrl($slug);
 
+            if($googleClient->indexUrl($slug)) {
+                echo sprintf("[NOTICE] Post '%s' indexed in google", $title);
+            } else {
+                echo sprintf("[ERROR] Post '%s' not indexed in google", $title);
+            }
         }
     }
     echo sprintf("Imported finished for rss %s, total imported %s \n", $rss, $imported);
